@@ -118,5 +118,13 @@
   "zone": "C",
   "cat": "旋转设备",
   "note": "离心泵，电站/油气配套旋转设备"
+ },
+ {
+  "slug": "relevant",
+  "name": "Relevant (RPS)",
+  "stand": "C10",
+  "zone": "C",
+  "cat": "成撬 / 旋转设备",
+  "note": "RPS（Relevant Solutions）——旋转设备(泵/压缩机/鼓风机)成撬集成、自动化、燃烧系统与维修服务，成撬打包同业（对标杰瑞）。"
  }
 ]

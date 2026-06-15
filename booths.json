@@ -859,12 +859,16 @@
    "num": 10,
    "span": 1,
    "slug": "relevant",
-   "name": "Relevant",
+   "name": "Relevant (RPS)",
    "logo": "https://cdn.asp.events/CLIENT_AFM_Bull_10AA2E15_ABB1_7C04_14F4F10E31B14185/sites/EPC2026/media/libraries/exhibitors/RID-Rawson-Relevant-logo-final.jpg/fit-in/320x9999/filters:no_upscale()",
    "x": 218.0,
    "y": 34.0,
    "w": 10.0,
-   "h": 10.0
+   "h": 10.0,
+   "hl": {
+    "cat": "成撬 / 旋转设备",
+    "note": "RPS（Relevant Solutions）——旋转设备(泵/压缩机/鼓风机)成撬集成、自动化、燃烧系统与维修服务，成撬打包同业（对标杰瑞）。"
+   }
   },
   {
    "stand": "C11",
