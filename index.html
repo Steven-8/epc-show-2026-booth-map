@@ -428,17 +428,8 @@ ZONES.forEach(z=>{
   sp.userData.zoneLabel=z; scene.add(sp);
 });
 
-// ----- highlight side annotations (thin leader line -> label in left/right margin) -----
-const annot=document.getElementById('annot'), asvg=document.getElementById('asvg');
-const SVGNS='http://www.w3.org/2000/svg';
-const hlAnno=hlBooths.map(hb=>{
-  const lab=document.createElement('div'); lab.className='alabel';
-  lab.innerHTML=`${hb.b.name}<span class="st">${hb.b.stand}</span>`;
-  lab.onclick=()=>openPanel(hb.b); annot.appendChild(lab);
-  const line=document.createElementNS(SVGNS,'path'); line.setAttribute('class','aline'); asvg.appendChild(line);
-  const dot=document.createElementNS(SVGNS,'circle'); dot.setAttribute('r','2.6'); dot.setAttribute('class','adot'); asvg.appendChild(dot);
-  return {hb,lab,line,dot};
-});
+// ----- highlight side annotations: disabled (too many labels). Gold towers + hover/tap identify them. -----
+const hlAnno=[];   // no leader-line labels; re-enable by mapping hlBooths if desired
 const _pv=new THREE.Vector3();
 function updateAnnotations(){
   const W=innerWidth,H=innerHeight,mid=W/2;
