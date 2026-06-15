@@ -62,6 +62,21 @@
   #tip .nm{font-size:13.5px;font-weight:700;line-height:1.2}
   #tip .mt{font-size:11px;color:var(--accent);font-weight:700;margin-top:3px;letter-spacing:.5px}
   #tip .hint{font-size:10px;color:#5d6b82;margin-top:7px}
+  #tip .pintro{font-size:12px;color:#cdd9ea;margin-top:8px;line-height:1.5;
+    max-height:4.5em;overflow:hidden}
+  #tip .tipbtns{display:none;gap:8px;margin-top:11px}
+  #tip .tdetail{flex:1;background:var(--accent2);color:#fff;border:0;border-radius:8px;
+    padding:11px;font-size:13.5px;font-weight:700;cursor:pointer}
+  #tip .tclose{background:var(--panel2);color:var(--muted);border:1px solid var(--line);
+    border-radius:8px;padding:11px 16px;font-size:13.5px;cursor:pointer}
+  /* tap-preview card mode (touch): dock to bottom, full width, interactive */
+  #tip.sheet{left:10px!important;right:10px!important;top:auto!important;
+    bottom:calc(96px + env(safe-area-inset-bottom));max-width:none;pointer-events:auto;
+    transform:translateY(0);padding:14px}
+  #tip.sheet .hint{display:none}
+  #tip.sheet .tipbtns{display:flex}
+  #tip.sheet .nm{font-size:15px}
+  #tip.sheet img{width:46px;height:46px}
   /* panel */
   #panel{position:fixed;top:0;right:0;height:100%;width:420px;max-width:92vw;z-index:50;
     background:linear-gradient(180deg,#141c2a,#10151f);border-left:1px solid var(--line);
@@ -153,7 +168,7 @@
 <div id="scalebar"></div>
 
 <div id="annot"><svg id="asvg"></svg></div>
-<div class="mhint">单指拖动旋转 · 双指缩放 · 点展位看详情</div>
+<div class="mhint">单指拖动旋转 · 双指缩放 · 轻点展位看简介</div>
 <div id="tip"></div>
 <div id="scrim"></div>
 <aside id="panel"></aside>
@@ -404,7 +419,22 @@ renderer.domElement.addEventListener('mousemove',e=>{
     renderer.domElement.style.cursor='pointer';
   } else { setHover(null); tip.classList.remove('show'); renderer.domElement.style.cursor='default'; }
 });
-// unified tap/click open (works for mouse + touch): a tap with little movement = select
+// touch devices have no hover → a tap shows a bottom preview card (= hover preview),
+// with a "查看详情" button for the full panel.
+let TOUCH = matchMedia('(pointer:coarse)').matches || ('ontouchstart' in window);
+if(location.hash.includes('touch'))TOUCH=true;
+function showPreview(m){
+  const b=m.userData; setHover(m); const e2=ENRICH[b.slug]||{};
+  tip.innerHTML=`<div class="row">${b.logo?`<img src="${b.logo}" onerror="this.style.display='none'"/>`:''}
+    <div><div class="nm">${b.name}</div><div class="mt">展位 ${b.stand} · 分区 ${b.zone}${b.hl?' · ★ 重点':''}</div></div></div>
+    ${e2.intro_cn?`<div class="pintro">${e2.intro_cn}</div>`:''}
+    <div class="tipbtns"><button class="tdetail">查看详情 →</button><button class="tclose">关闭</button></div>`;
+  tip.classList.add('show','sheet');
+  tip.querySelector('.tdetail').onclick=()=>{hidePreview();openPanel(b);};
+  tip.querySelector('.tclose').onclick=hidePreview;
+}
+function hidePreview(){ tip.classList.remove('show','sheet'); setHover(null); }
+// unified tap/click: little movement = select
 let _pd=null;
 renderer.domElement.addEventListener('pointerdown',e=>{_pd={x:e.clientX,y:e.clientY,t:Date.now()};
   const mh=document.querySelector('.mhint'); if(mh)mh.style.opacity='0';});
@@ -414,7 +444,8 @@ renderer.domElement.addEventListener('pointerup',e=>{
   mouse.x=(e.clientX/innerWidth)*2-1; mouse.y=-(e.clientY/innerHeight)*2+1;
   ray.setFromCamera(mouse,camera);
   const hits=ray.intersectObjects(meshes).filter(h=>h.object.visible && h.object.material.opacity>0.5);
-  if(hits.length) openPanel(hits[0].object.userData);
+  if(hits.length){ TOUCH ? showPreview(hits[0].object) : openPanel(hits[0].object.userData); }
+  else if(TOUCH){ hidePreview(); }
 });
 
 // ----- panel -----
@@ -422,7 +453,7 @@ const panel=document.getElementById('panel'), scrim=document.getElementById('scr
 const EKIND={verified_public:{t:'公开核实邮箱',c:'#36d399'},official_general:{t:'官方商务渠道',c:'#f59e0b'},
   inferred_pattern:{t:'按域名推断',c:'#8fa1bb'},unknown:{t:'未公开',c:'#5d6b82'}};
 function openPanel(b){
-  tip.classList.remove('show');
+  tip.classList.remove('show','sheet');
   const col=zoneColor[b.zone]||'#888'; const e=ENRICH[b.slug]||{};
   const profile=`https://www.epcshow.com/exhibitors/${b.slug}`;
   let contact='';
@@ -566,6 +597,8 @@ animate();
 // expose for screenshot harness
 window.__view=(v)=>{ v==='2d'?v2d.click():v3d.click(); };
 window.__open=(slug)=>{const b=BOOTHS.find(x=>x.slug===slug);if(b)openPanel(b);};
+window.__preview=(slug)=>{const m=meshes.find(x=>x.userData.slug===slug);if(m)showPreview(m);};
+{const mp=location.hash.match(/preview=([a-z0-9-]+)/);if(mp)setTimeout(()=>window.__preview(mp[1]),140);}
 const _h=location.hash;
 if(_h.includes('2d'))v2d.click();
 if(_h.includes('num'))document.getElementById('numbtn').click();
