@@ -171,6 +171,9 @@
   .lrow-name{font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:6px;
     overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .lrow-name .st{color:#ffcf45;font-size:12px;flex:0 0 auto}
+  .lcat{flex:0 0 auto;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:20px;color:#fff;letter-spacing:.3px}
+  .lcat-OEM{background:#3b82f6}.lcat-MRO{background:#f59e0b}.lcat-Design{background:#10b981}
+  .lcat-Packaging{background:#ec4899}.lcat-Other{background:#5a6b86}
   .lrow-sub{font-size:11.5px;color:var(--muted);margin-top:2px;overflow:hidden;
     text-overflow:ellipsis;white-space:nowrap}
   .lrow-sub b{color:#8fb0d8;font-weight:700}
@@ -220,6 +223,7 @@
       <button data-f="all" class="on">全部</button>
       <button data-f="hl">★ 重点</button>
       <button data-f="tbd">待定展位</button>
+      <select id="lcat"><option value="">全部类型</option></select>
       <select id="lzone"><option value="">全部分区</option></select>
     </div>
     <div class="lv-count" id="lvcount"></div>
@@ -248,20 +252,34 @@ window.addEventListener('unhandledrejection',e=>{var l=document.getElementById('
 <script src="booths.js"></script>
 <script src="enrich.js"></script>
 <script src="people.js"></script>
+<script src="cats.js"></script>
 <script>
 const OrbitControls = THREE.OrbitControls;
 
 const DATA = window.BOOTH_DATA;
 const ENRICH = window.ENRICH || {};
 const PEOPLE = window.PEOPLE || {};
+const CATS = window.CATS || {};
+const CATLABEL = {OEM:'OEM 设备制造', MRO:'MRO 维修服务', Design:'设计 / 工程', Packaging:'成撬 / 打包', Other:'其他'};
 const META = DATA.meta;
-const BOOTHS = DATA.booths;
+
+// ----- booths (+ synthesize a "TBD" module for exhibitors without a stand) -----
+const BOOTHS = DATA.booths.slice();
+{
+  let mxy=-1e9, mnx=1e9, mxx=-1e9;
+  DATA.booths.forEach(b=>{mxy=Math.max(mxy,b.y+b.h);mnx=Math.min(mnx,b.x);mxx=Math.max(mxx,b.x+b.w);});
+  const TB=10, cols=10, bw=cols*(TB+3)-3, startx=(mnx+mxx)/2-bw/2;
+  (DATA.tbd||[]).forEach((t,i)=>{const r=Math.floor(i/cols),c=i%cols;
+    BOOTHS.push(Object.assign({},t,{zone:'TBD',num:i+1,span:1,_tbd:true,
+      x:startx + c*(TB+3), y:mxy+40 + r*(TB+3), w:TB, h:TB}));});
+}
 
 // ----- zone colors -----
-const ZONES = META.zones;
+const ZONES = META.zones.concat((DATA.tbd&&DATA.tbd.length)?['TBD']:[]);
 const PALETTE = ['#3b82f6','#ef4444','#10b981','#f59e0b','#8b5cf6','#ec4899','#06b6d4',
   '#84cc16','#f97316','#14b8a6','#a855f7','#eab308','#0ea5e9','#f43f5e','#22c55e','#6366f1','#fb7185'];
 const zoneColor = {}; ZONES.forEach((z,i)=>zoneColor[z]=PALETTE[i%PALETTE.length]);
+zoneColor['TBD']='#566074';   // grey for the no-stand staging module
 
 // ----- bounds / centering -----
 let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
@@ -557,15 +575,16 @@ function openPanel(b){
       <button class="p-close" onclick="window.__close()">✕</button>
       <div class="p-band" style="background:${b.hl?'#ffcf45':col}"></div>
       ${b.logo?`<img class="p-logo" src="${b.logo}" onerror="this.style.display='none'"/>`:''}
-      <div class="p-stand" style="color:${b.hl?'#ffcf45':col}">展位 ${b.stand} · 分区 ${b.zone}${b.span>1?` · 岛型展位(×${b.span})`:''}</div>
+      <div class="p-stand" style="color:${b.hl?'#ffcf45':col}">${b._tbd?'展位待定 TBD':`展位 ${b.stand} · 分区 ${b.zone}`}${b.span>1?` · 岛型展位(×${b.span})`:''}</div>
       <h2>${b.name}</h2>
       ${b.hl?`<div style="margin-top:9px;display:inline-block;background:rgba(255,207,69,.14);border:1px solid #ffcf45;color:#ffe8a3;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px">★ 重点公司 · ${b.hl.cat}</div>`:''}
     </div>
     <div class="p-body">
       <div class="p-meta">
-        <span class="chip">📍 展位 ${b.stand}</span>
-        <span class="chip">🗂 分区 ${b.zone}</span>
-        <span class="chip">📐 ${b.w}×${b.h} ft${b.span>1?'（合并）':'（标准位）'}</span>
+        <span class="chip">📍 ${b._tbd?'展位待定':'展位 '+b.stand}</span>
+        ${b._tbd?'':`<span class="chip">🗂 分区 ${b.zone}</span>`}
+        ${CATS[b.slug]?`<span class="chip">🏷 ${CATLABEL[CATS[b.slug]]}</span>`:''}
+        ${b._tbd?'':`<span class="chip">📐 ${b.w}×${b.h} ft${b.span>1?'（合并）':'（标准位）'}</span>`}
       </div>
       ${b.hl?`<div style="background:rgba(255,207,69,.08);border:1px solid rgba(255,207,69,.3);border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.55;color:#ffe8a3;margin-bottom:6px">◆ 与你业务相关：${b.hl.note}</div>`:''}
       ${e.intro_cn?`<div class="sec-t">公司简介</div><p>${e.intro_cn}</p>`:''}
@@ -652,10 +671,11 @@ const vls=document.getElementById('vls');
 const rowsEl=document.getElementById('lvrows'), lq=document.getElementById('lq'),
       lzone=document.getElementById('lzone'), lvcount=document.getElementById('lvcount');
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const ALL=BOOTHS.concat(DATA.tbd.map(t=>Object.assign({_tbd:true},t)))
-  .slice().sort((a,b)=>a.name.localeCompare(b.name,'en'));
-ZONES.forEach(z=>{const o=document.createElement('option');o.value=z;o.textContent='分区 '+z;lzone.appendChild(o);});
-let lFilter='all', lText='', lZoneV='', listBuilt=false;
+const lcat=document.getElementById('lcat');
+const ALL=BOOTHS.slice().sort((a,b)=>a.name.localeCompare(b.name,'en'));   // BOOTHS already includes TBD
+ZONES.forEach(z=>{const o=document.createElement('option');o.value=z;o.textContent=(z==='TBD'?'待定 TBD':'分区 '+z);lzone.appendChild(o);});
+['OEM','MRO','Design','Packaging','Other'].forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=CATLABEL[c];lcat.appendChild(o);});
+let lFilter='all', lText='', lZoneV='', lCatV='', listBuilt=false;
 function lkOf(slug){ const pd=PEOPLE[slug]; if(!pd)return null;
   if(pd.people&&pd.people.length){const p=pd.people.find(x=>/^https?:.*linkedin\.com/.test(x.email||''))||pd.people[0];
     if(p&&/^https?:/.test(p.email||''))return p.email;}
@@ -666,9 +686,10 @@ function buildList(){
     if(lFilter==='hl'&&!b.hl)return;
     if(lFilter==='tbd'&&!b._tbd)return;
     if(lZoneV&&b.zone!==lZoneV)return;
+    if(lCatV&&(CATS[b.slug]||'Other')!==lCatV)return;
     if(lText){const s=(b.name+' '+(b.stand||'')+' '+(b.zone||'')).toLowerCase(); if(!s.includes(lText))return;}
     n++;
-    const e=ENRICH[b.slug]||{}, lk=lkOf(b.slug);
+    const e=ENRICH[b.slug]||{}, lk=lkOf(b.slug), cat=CATS[b.slug];
     const row=document.createElement('div'); row.className='lrow';
     const ch=(b.name||'?').trim()[0]||'?';
     let logo;
@@ -678,8 +699,9 @@ function buildList(){
     const sub = b._tbd ? '展位待定' : `<b>展位 ${esc(b.stand)}</b> · 分区 ${esc(b.zone)}`;
     const it = e.intro_cn ? (e.intro_cn.length>16?e.intro_cn.slice(0,16)+'…':e.intro_cn) : '';
     const intro = it?' · '+esc(it):'';
+    const catTag = cat?`<span class="lcat lcat-${cat}">${cat}</span>`:'';
     const main=document.createElement('div'); main.className='lrow-main';
-    main.innerHTML=`<div class="lrow-name">${esc(b.name)}${b.hl?'<span class="st">★</span>':''}</div><div class="lrow-sub">${sub}${intro}</div>`;
+    main.innerHTML=`<div class="lrow-name">${esc(b.name)}${b.hl?'<span class="st">★</span>':''}${catTag}</div><div class="lrow-sub">${sub}${intro}</div>`;
     row.appendChild(logo); row.appendChild(main);
     if(lk){const a=document.createElement('a');a.className='lrow-in';a.href=lk;a.target='_blank';a.rel='noopener';a.title='LinkedIn';a.textContent='in';row.appendChild(a);}
     const cv=document.createElement('span'); cv.className='lrow-chev'; cv.textContent='›'; row.appendChild(cv);
@@ -693,7 +715,8 @@ function buildList(){
   listBuilt=true;
 }
 lq.addEventListener('input',e=>{lText=e.target.value.trim().toLowerCase();buildList();});
-lzone.addEventListener('change',e=>{lZoneV=e.target.value;buildList();});
+lzone.addEventListener('change',e=>{lZoneV=e.target.value;buildList();rowsEl.scrollTop=0;});
+lcat.addEventListener('change',e=>{lCatV=e.target.value;buildList();rowsEl.scrollTop=0;});
 document.querySelectorAll('.lv-chips button[data-f]').forEach(btn=>{
   btn.onclick=()=>{document.querySelectorAll('.lv-chips button[data-f]').forEach(x=>x.classList.remove('on'));
     btn.classList.add('on'); lFilter=btn.dataset.f; buildList(); rowsEl.scrollTop=0;};
