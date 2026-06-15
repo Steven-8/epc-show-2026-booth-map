@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EPC Show 2026 展位 3D 平面图 · George R. Brown Convention Center</title>
+<style>
+  :root{--bg:#0b0f17;--panel:#131a26;--panel2:#1a2333;--line:#2a3547;--ink:#e8eef7;
+        --muted:#90a2bd;--accent:#36d399;--accent2:#3b82f6;}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);overflow:hidden;
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
+  #app{position:fixed;inset:0}
+  canvas{display:block}
+  header{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;
+    gap:16px;padding:12px 20px;background:linear-gradient(180deg,rgba(11,15,23,.94),rgba(11,15,23,.55) 70%,transparent);
+    flex-wrap:wrap;pointer-events:none}
+  header>*{pointer-events:auto}
+  header h1{font-size:16px;margin:0;font-weight:700}
+  header .sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .grow{flex:1}
+  .ctrls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .search{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 12px;
+    color:var(--ink);font-size:13px;width:210px;outline:none}
+  .search::placeholder{color:#5d6b82}
+  select.zonesel{background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+    color:var(--ink);font-size:13px;padding:7px 10px;outline:none}
+  .toggle{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .toggle button{background:transparent;color:var(--muted);border:0;padding:7px 14px;font-size:13px;
+    cursor:pointer;font-weight:600}
+  .toggle button.on{background:var(--accent2);color:#fff}
+  /* legend */
+  #legend{position:absolute;left:20px;bottom:18px;z-index:20;display:flex;flex-wrap:wrap;gap:4px 10px;
+    max-width:340px;background:rgba(19,26,38,.82);border:1px solid var(--line);border-radius:12px;
+    padding:10px 12px;font-size:11px;color:var(--muted);backdrop-filter:blur(6px)}
+  #legend .lt{width:100%;font-weight:700;color:var(--ink);margin-bottom:2px;font-size:11px;letter-spacing:.5px}
+  #legend span{display:inline-flex;align-items:center;cursor:pointer;user-select:none}
+  #legend i{width:11px;height:11px;border-radius:3px;margin-right:5px}
+  #legend span.off{opacity:.35}
+  /* scale bar */
+  #scalebar{position:absolute;right:20px;bottom:18px;z-index:20;font-size:11px;color:var(--muted);
+    background:rgba(19,26,38,.82);border:1px solid var(--line);border-radius:10px;padding:8px 12px;
+    backdrop-filter:blur(6px);text-align:right;line-height:1.5}
+  #scalebar b{color:var(--ink)}
+  /* highlight side annotations (leader lines + margin labels) */
+  #annot{position:fixed;inset:0;z-index:16;pointer-events:none}
+  #annot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .aline{stroke:#d9a93a;stroke-width:1;fill:none;opacity:.85}
+  .adot{fill:#ffcf45;stroke:#7a5a00;stroke-width:.5}
+  .alabel{position:absolute;pointer-events:auto;cursor:pointer;font-size:11px;font-weight:700;
+    color:#ffe8a3;background:rgba(20,16,6,.92);border:1px solid #d9a93a;border-radius:6px;
+    padding:3px 8px;white-space:nowrap;transform:translateY(-50%);box-shadow:0 2px 10px rgba(0,0,0,.45)}
+  .alabel:hover{background:#2a200a;border-color:#ffcf45}
+  .alabel .st{color:#9fb0c8;font-weight:600;margin-left:5px;font-size:10px}
+  /* tooltip */
+  #tip{position:fixed;z-index:40;max-width:280px;pointer-events:none;opacity:0;transform:translateY(6px);
+    transition:opacity .1s,transform .1s;background:rgba(17,24,36,.97);border:1px solid var(--line);
+    border-radius:12px;padding:11px 13px;box-shadow:0 18px 50px rgba(0,0,0,.55);backdrop-filter:blur(6px)}
+  #tip.show{opacity:1;transform:translateY(0)}
+  #tip .row{display:flex;gap:10px;align-items:center}
+  #tip img{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:7px;flex:0 0 auto}
+  #tip .nm{font-size:13.5px;font-weight:700;line-height:1.2}
+  #tip .mt{font-size:11px;color:var(--accent);font-weight:700;margin-top:3px;letter-spacing:.5px}
+  #tip .hint{font-size:10px;color:#5d6b82;margin-top:7px}
+  /* panel */
+  #panel{position:fixed;top:0;right:0;height:100%;width:420px;max-width:92vw;z-index:50;
+    background:linear-gradient(180deg,#141c2a,#10151f);border-left:1px solid var(--line);
+    box-shadow:-30px 0 60px rgba(0,0,0,.5);transform:translateX(100%);
+    transition:transform .38s cubic-bezier(.4,.05,.2,1);overflow-y:auto}
+  #panel.open{transform:translateX(0)}
+  .p-head{position:relative;padding:24px 24px 18px;border-bottom:1px solid var(--line)}
+  .p-band{height:4px;border-radius:4px;width:50px;margin-bottom:14px}
+  .p-logo{width:74px;height:74px;object-fit:contain;background:#fff;border-radius:11px;padding:7px;margin-bottom:12px}
+  .p-stand{font-size:12px;font-weight:700;letter-spacing:1px}
+  .p-head h2{margin:7px 0 2px;font-size:21px;line-height:1.2}
+  .p-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:9px;
+    background:var(--panel2);border:1px solid var(--line);color:var(--ink);cursor:pointer;font-size:17px}
+  .p-body{padding:18px 24px 40px}
+  .p-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:11.5px;color:#cdd9ea}
+  .sec-t{font-size:11px;font-weight:700;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;margin:20px 0 8px}
+  .p-body p{font-size:13.5px;line-height:1.7;color:#d7e2f0;margin:0 0 6px}
+  .mail,.web{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);
+    text-decoration:none;word-break:break-all}
+  .mail:hover,.web:hover{text-decoration:underline}
+  .ekind{font-size:10px;color:#7d8ca6;margin-top:5px;display:flex;align-items:center;gap:5px}
+  .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .visit{display:inline-block;background:var(--accent2);color:#fff;text-decoration:none;
+    padding:10px 15px;border-radius:9px;font-size:12.5px;font-weight:600}
+  .visit.alt{background:var(--panel2);border:1px solid var(--line);color:var(--ink)}
+  .visit:hover{filter:brightness(1.1)}
+  .disc{margin-top:18px;font-size:11px;color:#5d6b82;line-height:1.6;border-top:1px solid var(--line);padding-top:12px}
+  #scrim{position:fixed;inset:0;background:rgba(4,7,12,.45);z-index:45;opacity:0;pointer-events:none;transition:.3s}
+  #scrim.on{opacity:1;pointer-events:auto}
+  #loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:14px;z-index:60;background:var(--bg)}
+  .tbdbtn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:9px;
+    padding:7px 12px;font-size:12px;cursor:pointer}
+  /* ===== mobile / touch ===== */
+  @media (max-width:760px){
+    header{gap:8px;padding:9px 12px}
+    header h1{font-size:14px}
+    header .sub{display:none}
+    .ctrls{gap:6px;width:100%}
+    .search{flex:1;width:auto;min-width:80px;font-size:16px;padding:8px 10px}
+    select.zonesel{font-size:13px;padding:8px 8px;flex:0 0 auto;max-width:34vw}
+    .tbdbtn{padding:8px 9px;font-size:12px}
+    .toggle button{padding:8px 11px}
+    #annot{display:none}                 /* 侧边引线标注在窄屏隐藏，改为点金色展位/“重点公司”筛选 */
+    #legend{left:8px;right:8px;bottom:8px;max-width:none;max-height:84px;overflow:auto;
+      gap:3px 8px;padding:8px 10px;font-size:11px}
+    #legend .lt{font-size:10px}
+    #scalebar{display:none}
+    #panel{width:100%;max-width:100vw}
+    .p-head{padding:20px 18px 16px}
+    .p-head h2{font-size:19px}
+    .p-body{padding:16px 18px 60px}
+    #tip{max-width:74vw}
+    .mhint{display:block !important}
+  }
+  /* small floating hint shown on touch devices */
+  .mhint{display:none;position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:18;
+    background:rgba(17,24,36,.92);border:1px solid var(--line);color:var(--muted);
+    font-size:11px;padding:6px 12px;border-radius:20px;pointer-events:none;white-space:nowrap;
+    transition:opacity .5s}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="loading">正在加载 3D 展厅…</div>
+
+<header>
+  <div>
+    <h1>EPC Show 2026 · 展位 3D 平面图</h1>
+    <div class="sub">Energy Projects Conference &amp; Expo · George R. Brown Convention Center, Houston · 鼠标拖动旋转、滚轮缩放，悬停看公司，点击看详情</div>
+  </div>
+  <div class="grow"></div>
+  <div class="ctrls">
+    <input id="q" class="search" placeholder="搜索公司 / 展位号…"/>
+    <select id="zonesel" class="zonesel"><option value="">全部分区</option></select>
+    <button id="hlbtn" class="tbdbtn">★ 重点公司</button>
+    <button id="numbtn" class="tbdbtn">展位号</button>
+    <button id="tbd" class="tbdbtn">待定展位</button>
+    <div class="toggle">
+      <button id="v3d" class="on">3D 立体</button>
+      <button id="v2d">俯视</button>
+    </div>
+  </div>
+</header>
+
+<div id="legend"><div class="lt">展位分区（点击可隐藏/显示）</div></div>
+<div id="scalebar"></div>
+
+<div id="annot"><svg id="asvg"></svg></div>
+<div class="mhint">单指拖动旋转 · 双指缩放 · 点展位看详情</div>
+<div id="tip"></div>
+<div id="scrim"></div>
+<aside id="panel"></aside>
+
+<script>
+window.addEventListener('error',e=>{var l=document.getElementById('loading');
+  if(l){l.style.color='#f87171';l.style.padding='20px';l.style.textAlign='center';
+    l.textContent='ERR: '+(e.message||e.error)+'  ['+((e.filename||'').split('/').pop())+':'+e.lineno+']';}});
+window.addEventListener('unhandledrejection',e=>{var l=document.getElementById('loading');
+  if(l){l.style.color='#f87171';l.textContent='PROMISE: '+((e.reason&&e.reason.message)||e.reason);}});
+</script>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="booths.js"></script>
+<script src="enrich.js"></script>
+<script src="people.js"></script>
+<script>
+const OrbitControls = THREE.OrbitControls;
+
+const DATA = window.BOOTH_DATA;
+const ENRICH = window.ENRICH || {};
+const PEOPLE = window.PEOPLE || {};
+const META = DATA.meta;
+const BOOTHS = DATA.booths;
+
+// ----- zone colors -----
+const ZONES = META.zones;
+const PALETTE = ['#3b82f6','#ef4444','#10b981','#f59e0b','#8b5cf6','#ec4899','#06b6d4',
+  '#84cc16','#f97316','#14b8a6','#a855f7','#eab308','#0ea5e9','#f43f5e','#22c55e','#6366f1','#fb7185'];
+const zoneColor = {}; ZONES.forEach((z,i)=>zoneColor[z]=PALETTE[i%PALETTE.length]);
+
+// ----- bounds / centering -----
+let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
+BOOTHS.forEach(b=>{minX=Math.min(minX,b.x);minY=Math.min(minY,b.y);
+  maxX=Math.max(maxX,b.x+b.w);maxY=Math.max(maxY,b.y+b.h);});
+const extW=maxX-minX, extH=maxY-minY, cX=(minX+maxX)/2, cY=(minY+maxY)/2;
+const HALLW=META.hall_w||extW+40, HALLH=META.hall_h||extH+40;
+
+// ----- scene -----
+const app=document.getElementById('app');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color('#0b0f17');
+scene.fog=new THREE.Fog('#0b0f17', 600, 1500);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.5, 4000);
+const ISO=[extW*0.55, Math.max(extW,extH)*0.95, extH*0.95];
+camera.position.set(ISO[0],ISO[1],ISO[2]);
+
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);
+renderer.shadowMap.enabled=true;
+app.appendChild(renderer.domElement);
+
+const controls=new OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true; controls.dampingFactor=.08;
+controls.maxPolarAngle=Math.PI*0.49; controls.target.set(0,0,0);
+controls.minDistance=60; controls.maxDistance=1400;
+
+// lights
+scene.add(new THREE.HemisphereLight('#bcd2f0','#1a2030',1.05));
+const dir=new THREE.DirectionalLight('#ffffff',1.5);
+dir.position.set(extW*0.4,extH*1.2,extH*0.3); dir.castShadow=true;
+dir.shadow.mapSize.set(2048,2048);
+const d=Math.max(extW,extH);
+dir.shadow.camera.left=-d; dir.shadow.camera.right=d; dir.shadow.camera.top=d; dir.shadow.camera.bottom=-d;
+dir.shadow.camera.far=d*4; scene.add(dir);
+
+// ----- helper to map booth coords to world (center at origin), y-> -z so it reads naturally -----
+function wx(x){return x-cX;} function wz(y){return y-cY;}
+
+// floor / hall plate
+const floorMat=new THREE.MeshStandardMaterial({color:'#0e1422',roughness:.95,metalness:0});
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(HALLW+60,HALLH+60),floorMat);
+floor.rotation.x=-Math.PI/2; floor.position.y=-0.1; floor.receiveShadow=true; scene.add(floor);
+// grid (10ft)
+const grid=new THREE.GridHelper(Math.max(HALLW,HALLH)+60, Math.round((Math.max(HALLW,HALLH)+60)/10), '#1c2740','#162033');
+grid.position.y=0; scene.add(grid);
+// hall outline rectangle (to scale)
+const hg=new THREE.BufferGeometry().setFromPoints([
+  new THREE.Vector3(-HALLW/2,0.2,-HALLH/2), new THREE.Vector3(HALLW/2,0.2,-HALLH/2),
+  new THREE.Vector3(HALLW/2,0.2,HALLH/2), new THREE.Vector3(-HALLW/2,0.2,HALLH/2),
+  new THREE.Vector3(-HALLW/2,0.2,-HALLH/2)]);
+scene.add(new THREE.Line(hg,new THREE.LineBasicMaterial({color:'#3a4a66'})));
+
+// ----- booths -----
+const BHEIGHT=9, HL_HEIGHT=20, GAP=1.7; // ft
+const hlBooths=[];   // highlighted booths -> side annotations with leader lines
+const boothGroup=new THREE.Group(); scene.add(boothGroup);
+const numGroup=new THREE.Group(); numGroup.visible=false; scene.add(numGroup);   // booth numbers (toggle)
+const hlGroup=new THREE.Group(); scene.add(hlGroup);                              // highlight name labels
+const meshes=[];
+const baseGeo=new THREE.BoxGeometry(1,1,1);
+const edgeGeo=new THREE.EdgesGeometry(baseGeo);
+const edgeMatN=new THREE.LineBasicMaterial({color:'#070b12',transparent:true,opacity:.5});
+const edgeMatH=new THREE.LineBasicMaterial({color:'#fff0b0'});
+function roundRect(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);
+  g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath();}
+// cached number textures (numbers 1..~42 reused across all zones)
+const numTexCache={};
+function numSprite(txt,colorHex){
+  const key=txt+'|'+colorHex; let tex=numTexCache[key];
+  if(!tex){const c=document.createElement('canvas');c.width=128;c.height=72;
+    const g=c.getContext('2d');g.font='bold 56px Arial';g.textAlign='center';g.textBaseline='middle';
+    g.lineWidth=9;g.strokeStyle='rgba(6,10,18,.9)';g.strokeText(txt,64,40);
+    g.fillStyle=colorHex;g.fillText(txt,64,40);tex=new THREE.CanvasTexture(c);numTexCache[key]=tex;}
+  return new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:true}));
+}
+function nameLabel(txt){
+  const fs=30,pad=14;const mc=document.createElement('canvas').getContext('2d');
+  mc.font='bold '+fs+'px Arial';const w=Math.ceil(mc.measureText(txt).width)+pad*2,h=fs+pad;
+  const c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');
+  g.fillStyle='rgba(24,18,4,.94)';roundRect(g,0,0,w,h,12);g.fill();
+  g.strokeStyle='#ffd24a';g.lineWidth=3;roundRect(g,1.5,1.5,w-3,h-3,11);g.stroke();
+  g.font='bold '+fs+'px Arial';g.textAlign='center';g.textBaseline='middle';g.fillStyle='#ffe8a3';
+  g.fillText(txt,w/2,h/2+1);
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),transparent:true,depthTest:false}));
+  sp.scale.set(w/h*8.5,8.5,1);return sp;
+}
+BOOTHS.forEach(b=>{
+  const isHL=!!b.hl;
+  const base=new THREE.Color(zoneColor[b.zone]||'#888');
+  const hsl={};base.getHSL(hsl);
+  const vv=((b.num*53)%7)/7;                                   // per-booth lightness variation
+  const col=new THREE.Color().setHSL(hsl.h,Math.min(1,hsl.s*0.95),0.40+0.17*vv);
+  const mat=new THREE.MeshStandardMaterial({
+    color:isHL?new THREE.Color('#ffcf45'):col,
+    roughness:isHL?.34:.62, metalness:isHL?.4:.05,
+    emissive:new THREE.Color(isHL?'#5a3d00':'#000000')});
+  const h=isHL?HL_HEIGHT:BHEIGHT;
+  const w=Math.max(2,b.w-GAP), dp=Math.max(2,b.h-GAP);
+  const m=new THREE.Mesh(baseGeo,mat);
+  m.scale.set(w,h,dp); m.position.set(wx(b.x+b.w/2),h/2,wz(b.y+b.h/2));
+  m.castShadow=true;m.receiveShadow=true;
+  m.userData=b; m.userData._h=h; m.userData._emis=mat.emissive.clone();
+  meshes.push(m); boothGroup.add(m);
+  // crisp edge outline per booth
+  const ed=new THREE.LineSegments(edgeGeo,isHL?edgeMatH:edgeMatN);
+  ed.scale.copy(m.scale); ed.position.copy(m.position); boothGroup.add(ed); m.userData._edge=ed;
+  // booth number sprite (hidden until toggled)
+  const ns=numSprite(String(b.num),isHL?'#2a2000':'#e3ecf8');
+  const s=Math.min(w,dp); ns.scale.set(s*1.5,s*0.85,1);
+  ns.position.set(m.position.x,h+2.4,m.position.z);
+  numGroup.add(ns); m.userData._num=ns;
+  // highlight: taller gold booth; name is annotated off to the side via leader line (see updateAnnotations)
+  if(isHL){ hlBooths.push({b, mesh:m, top:h+4}); }
+});
+
+// ----- zone label sprites -----
+function makeLabel(text,color){
+  const c=document.createElement('canvas'); c.width=c.height=128;
+  const g=c.getContext('2d');
+  g.fillStyle='rgba(10,14,22,.0)'; g.fillRect(0,0,128,128);
+  g.font='bold 92px Arial'; g.textAlign='center'; g.textBaseline='middle';
+  g.fillStyle=color; g.fillText(text,64,68);
+  const tex=new THREE.CanvasTexture(c);
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false}));
+  return sp;
+}
+const zoneCentroid={};
+ZONES.forEach(z=>{
+  const bs=BOOTHS.filter(b=>b.zone===z); if(!bs.length)return;
+  let sx=0,sy=0; bs.forEach(b=>{sx+=b.x+b.w/2;sy+=b.y+b.h/2;});
+  const x=sx/bs.length, y=sy/bs.length; zoneCentroid[z]={x,y};
+  const sp=makeLabel(z,zoneColor[z]);
+  sp.position.set(wx(x),BHEIGHT+26,wz(y)); sp.scale.set(34,34,1);
+  sp.userData.zoneLabel=z; scene.add(sp);
+});
+
+// ----- highlight side annotations (thin leader line -> label in left/right margin) -----
+const annot=document.getElementById('annot'), asvg=document.getElementById('asvg');
+const SVGNS='http://www.w3.org/2000/svg';
+const hlAnno=hlBooths.map(hb=>{
+  const lab=document.createElement('div'); lab.className='alabel';
+  lab.innerHTML=`${hb.b.name}<span class="st">${hb.b.stand}</span>`;
+  lab.onclick=()=>openPanel(hb.b); annot.appendChild(lab);
+  const line=document.createElementNS(SVGNS,'path'); line.setAttribute('class','aline'); asvg.appendChild(line);
+  const dot=document.createElementNS(SVGNS,'circle'); dot.setAttribute('r','2.6'); dot.setAttribute('class','adot'); asvg.appendChild(dot);
+  return {hb,lab,line,dot};
+});
+const _pv=new THREE.Vector3();
+function updateAnnotations(){
+  const W=innerWidth,H=innerHeight,mid=W/2;
+  const items=[];
+  hlAnno.forEach(a=>{
+    if(!a.hb.mesh.visible){a.lab.style.display='none';a.line.style.display='none';a.dot.style.display='none';return;}
+    _pv.set(a.hb.mesh.position.x,a.hb.top,a.hb.mesh.position.z).project(camera);
+    if(_pv.z>1){a.lab.style.display='none';a.line.style.display='none';a.dot.style.display='none';return;}
+    items.push({a,sx:(_pv.x*0.5+0.5)*W,sy:(-_pv.y*0.5+0.5)*H});
+  });
+  ['L','R'].forEach(side=>{
+    const arr=items.filter(i=>(i.sx<mid)===(side==='L')).sort((p,q)=>p.sy-q.sy);
+    const SP=24, top=78, bot=H-46; let y=top;
+    arr.forEach(i=>{
+      const a=i.a; a.lab.style.display='block';a.line.style.display='';a.dot.style.display='';
+      const lw=a.lab.offsetWidth; const ly=Math.max(y,Math.min(i.sy,bot)); y=ly+SP;
+      const lx= side==='L'? 12 : W-12-lw;
+      a.lab.style.left=lx+'px'; a.lab.style.top=ly+'px';
+      const ax= side==='L'? lx+lw : lx;
+      a.line.setAttribute('d',`M ${i.sx.toFixed(1)} ${i.sy.toFixed(1)} L ${ax.toFixed(1)} ${ly.toFixed(1)}`);
+      a.dot.setAttribute('cx',i.sx.toFixed(1)); a.dot.setAttribute('cy',i.sy.toFixed(1));
+    });
+  });
+}
+
+// ----- interaction -----
+const ray=new THREE.Raycaster(); const mouse=new THREE.Vector2();
+const tip=document.getElementById('tip');
+let hovered=null, hiddenZones=new Set(), filterText='', hlOnly=false;
+function setHover(m){
+  if(hovered===m)return;
+  if(hovered) hovered.material.emissive.copy(hovered.userData._emis);
+  hovered=m;
+  if(hovered){ hovered.material.emissive.copy(hovered.material.color).multiplyScalar(0.5); }
+}
+function visible(b){
+  if(hiddenZones.has(b.zone))return false;
+  if(hlOnly && !b.hl)return false;
+  if(filterText){const s=(b.name+' '+b.stand+' '+b.zone).toLowerCase();return s.includes(filterText);}
+  return true;
+}
+function applyFilter(){
+  meshes.forEach(m=>{
+    const b=m.userData, shown=!hiddenZones.has(b.zone) && !(hlOnly&&!b.hl);
+    const vis=visible(b);
+    m.visible=shown; if(m.userData._edge)m.userData._edge.visible=shown;
+    if(m.userData._name)m.userData._name.visible=shown;
+    if(m.userData._num)m.userData._num.visible=shown && numGroup.visible;
+    m.material.opacity=vis?1:0.10; m.material.transparent=!vis;
+  });
+}
+renderer.domElement.addEventListener('mousemove',e=>{
+  mouse.x=(e.clientX/innerWidth)*2-1; mouse.y=-(e.clientY/innerHeight)*2+1;
+  ray.setFromCamera(mouse,camera);
+  const hits=ray.intersectObjects(meshes).filter(h=>h.object.visible && h.object.material.opacity>0.5);
+  if(hits.length){
+    const m=hits[0].object; setHover(m); const b=m.userData;
+    const e2=ENRICH[b.slug]||{};
+    tip.innerHTML=`<div class="row">${b.logo?`<img src="${b.logo}" onerror="this.style.display='none'"/>`:''}
+      <div><div class="nm">${b.name}</div><div class="mt">展位 ${b.stand} · 分区 ${b.zone}</div></div></div>
+      ${e2.intro_cn?`<div style="font-size:11.5px;color:#cdd9ea;margin-top:7px;line-height:1.5">${e2.intro_cn}</div>`:''}
+      <div class="hint">点击查看详情与联系方式</div>`;
+    tip.classList.add('show');
+    let x=e.clientX+16,y=e.clientY+16;
+    if(x+tip.offsetWidth>innerWidth-10)x=e.clientX-tip.offsetWidth-16;
+    if(y+tip.offsetHeight>innerHeight-10)y=innerHeight-tip.offsetHeight-10;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+    renderer.domElement.style.cursor='pointer';
+  } else { setHover(null); tip.classList.remove('show'); renderer.domElement.style.cursor='default'; }
+});
+// unified tap/click open (works for mouse + touch): a tap with little movement = select
+let _pd=null;
+renderer.domElement.addEventListener('pointerdown',e=>{_pd={x:e.clientX,y:e.clientY,t:Date.now()};
+  const mh=document.querySelector('.mhint'); if(mh)mh.style.opacity='0';});
+renderer.domElement.addEventListener('pointerup',e=>{
+  if(!_pd)return; const moved=Math.hypot(e.clientX-_pd.x,e.clientY-_pd.y), dt=Date.now()-_pd.t; _pd=null;
+  if(moved>9||dt>600)return;                 // it was a drag/long-press → let OrbitControls handle it
+  mouse.x=(e.clientX/innerWidth)*2-1; mouse.y=-(e.clientY/innerHeight)*2+1;
+  ray.setFromCamera(mouse,camera);
+  const hits=ray.intersectObjects(meshes).filter(h=>h.object.visible && h.object.material.opacity>0.5);
+  if(hits.length) openPanel(hits[0].object.userData);
+});
+
+// ----- panel -----
+const panel=document.getElementById('panel'), scrim=document.getElementById('scrim');
+const EKIND={verified_public:{t:'公开核实邮箱',c:'#36d399'},official_general:{t:'官方商务渠道',c:'#f59e0b'},
+  inferred_pattern:{t:'按域名推断',c:'#8fa1bb'},unknown:{t:'未公开',c:'#5d6b82'}};
+function openPanel(b){
+  tip.classList.remove('show');
+  const col=zoneColor[b.zone]||'#888'; const e=ENRICH[b.slug]||{};
+  const profile=`https://www.epcshow.com/exhibitors/${b.slug}`;
+  let contact='';
+  if(e.email && e.email_kind!=='unknown'){
+    const k=EKIND[e.email_kind]||EKIND.official_general;
+    const isUrl=/^https?:\/\//.test(e.email);
+    contact=`<div class="sec-t">商务联系方式</div>
+      ${isUrl?`<a class="web" href="${e.email}" target="_blank" rel="noopener">🌐 官方联系页 ↗</a>`
+             :`<a class="mail" href="mailto:${e.email}">✉ ${e.email}</a>`}
+      <div class="ekind"><span class="dot" style="background:${k.c}"></span>${k.t}</div>`;
+  }
+  // ----- personnel (named public contacts; only researched for highlighted key cos) -----
+  const PK={verified_public:['公开核实','#36d399'],official_general:['官方渠道','#f59e0b'],
+    linkedin:['LinkedIn 公开','#2aa3f5'],inferred:['按规则推断','#8fa1bb'],unknown:['未公开','#5d6b82']};
+  const pd=PEOPLE[b.slug]; let people='';
+  if(pd && pd.people && pd.people.length){
+    people=`<div class="sec-t">参展人员 / 公开对接人 (${pd.people.length})</div>`+pd.people.map(p=>{
+      const km=PK[p.kind]||PK.unknown; const isUrl=/^https?:\/\//.test(p.email||'');
+      const isLk=p.kind==='linkedin'||/linkedin\.com/.test(p.email||'');
+      const ini=(p.name||'·').replace(/[^A-Za-z一-龥]/g,'').slice(0,2).toUpperCase()||'·';
+      const link=p.email?(isUrl?`<a class="mail" href="${p.email}" target="_blank" rel="noopener">${isLk?'🔗 LinkedIn ↗':'🌐 链接 ↗'}</a>`
+                                :`<a class="mail" href="mailto:${p.email}">✉ ${p.email}</a>`):'';
+      return `<div style="display:flex;gap:11px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:11px 12px;margin-bottom:9px">
+        <div style="width:38px;height:38px;border-radius:50%;background:#26334a;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex:0 0 auto">${ini}</div>
+        <div style="flex:1"><div style="font-size:14px;font-weight:700">${p.name}</div>
+          <div style="font-size:11.5px;color:var(--muted);margin:1px 0 6px">${p.title||''}</div>${link}
+          <div class="ekind"><span class="dot" style="background:${km[1]}"></span>${km[0]}</div></div></div>`;
+    }).join('');
+  } else if(b.hl){
+    people=`<div class="sec-t">参展人员</div><p style="font-size:12px;color:var(--muted)">${(pd&&pd.note)||'公开渠道未查到具名展位人员，建议经上方商务渠道对接。'}</p>`;
+  }
+  panel.innerHTML=`
+    <div class="p-head">
+      <button class="p-close" onclick="window.__close()">✕</button>
+      <div class="p-band" style="background:${b.hl?'#ffcf45':col}"></div>
+      ${b.logo?`<img class="p-logo" src="${b.logo}" onerror="this.style.display='none'"/>`:''}
+      <div class="p-stand" style="color:${b.hl?'#ffcf45':col}">展位 ${b.stand} · 分区 ${b.zone}${b.span>1?` · 岛型展位(×${b.span})`:''}</div>
+      <h2>${b.name}</h2>
+      ${b.hl?`<div style="margin-top:9px;display:inline-block;background:rgba(255,207,69,.14);border:1px solid #ffcf45;color:#ffe8a3;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px">★ 重点公司 · ${b.hl.cat}</div>`:''}
+    </div>
+    <div class="p-body">
+      <div class="p-meta">
+        <span class="chip">📍 展位 ${b.stand}</span>
+        <span class="chip">🗂 分区 ${b.zone}</span>
+        <span class="chip">📐 ${b.w}×${b.h} ft${b.span>1?'（合并）':'（标准位）'}</span>
+      </div>
+      ${b.hl?`<div style="background:rgba(255,207,69,.08);border:1px solid rgba(255,207,69,.3);border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.55;color:#ffe8a3;margin-bottom:6px">◆ 与你业务相关：${b.hl.note}</div>`:''}
+      ${e.intro_cn?`<div class="sec-t">公司简介</div><p>${e.intro_cn}</p>`:''}
+      ${e.website?`<div class="sec-t">官方网站</div><a class="web" href="${e.website}" target="_blank" rel="noopener">🌐 ${e.website.replace(/^https?:\/\//,'').replace(/\/$/,'')} ↗</a>`:''}
+      ${contact}
+      ${people}
+      <div class="btnrow">
+        <a class="visit" href="${profile}" target="_blank" rel="noopener">官方展商页 ↗</a>
+        <a class="visit alt" href="${profile}" target="_blank" rel="noopener">联系展商（表单）</a>
+      </div>
+      <div class="disc">展位位置与尺寸为依据官方公布的<b>展位号</b>重建的<b>近似到比例</b>布局（标准 10×10 ft）；展厅按 GRB 真实尺寸建模。公司简介/网站/邮箱来自公开资料检索并标注来源；<b>参展人员</b>仅对"重点公司"做了公开对接人检索（非官方展位名单，官网不公开具名到场人员）。如需精确展位几何，提供官方平面图(PDF/CAD)即可替换。</div>
+    </div>`;
+  panel.classList.add('open'); scrim.classList.add('on');
+}
+window.__close=()=>{panel.classList.remove('open');scrim.classList.remove('on');};
+scrim.addEventListener('click',window.__close);
+addEventListener('keydown',e=>{if(e.key==='Escape')window.__close();});
+
+// ----- legend -----
+const legend=document.getElementById('legend');
+ZONES.forEach(z=>{
+  const n=BOOTHS.filter(b=>b.zone===z).length;
+  const s=document.createElement('span'); s.innerHTML=`<i style="background:${zoneColor[z]}"></i>${z} (${n})`;
+  s.onclick=()=>{ if(hiddenZones.has(z)){hiddenZones.delete(z);s.classList.remove('off');}
+    else{hiddenZones.add(z);s.classList.add('off');} applyFilter(); };
+  legend.appendChild(s);
+});
+{const s=document.createElement('span'); s.style.cssText='width:100%;margin-top:5px;color:#ffe8a3';
+ s.innerHTML=`<i style="background:#ffcf45"></i>★ 重点公司 (${BOOTHS.filter(b=>b.hl).length}) · 燃机 / 发电 / 大型 EPC 同业`;
+ legend.appendChild(s);}
+
+// ----- scale bar / info -----
+document.getElementById('scalebar').innerHTML=
+  `<b>${META.show.split('—')[0].trim()}</b><br>${BOOTHS.length} 个展位 · ${ZONES.length} 个分区 · ${DATA.tbd.length} 待定<br>`+
+  `布局范围 ≈ <b>${Math.round(extW)}×${Math.round(extH)} ft</b> · 网格=10ft<br>`+
+  `<span style="color:#5d6b82">${META.hall_real_dims} · 近似重建</span>`;
+
+// ----- zone select -----
+const zsel=document.getElementById('zonesel');
+ZONES.forEach(z=>{const o=document.createElement('option');o.value=z;o.textContent='分区 '+z+' ('+BOOTHS.filter(b=>b.zone===z).length+')';zsel.appendChild(o);});
+zsel.onchange=()=>{
+  const z=zsel.value;
+  if(!z){controls.target.set(0,0,0);flyTo(ISO[0],ISO[1],ISO[2]);}
+  else{const c=zoneCentroid[z];controls.target.set(wx(c.x),0,wz(c.y));
+    flyTo(wx(c.x)+60,120,wz(c.y)+120);}
+};
+
+// ----- search -----
+document.getElementById('q').addEventListener('input',e=>{filterText=e.target.value.trim().toLowerCase();applyFilter();});
+
+// ----- booth-number toggle & highlight filter -----
+document.getElementById('numbtn').onclick=function(){
+  numGroup.visible=!numGroup.visible;
+  this.style.color=numGroup.visible?'#fff':''; this.style.borderColor=numGroup.visible?'#3b82f6':'';
+  applyFilter();
+};
+document.getElementById('hlbtn').onclick=function(){
+  hlOnly=!hlOnly;
+  this.style.color=hlOnly?'#ffcf45':''; this.style.borderColor=hlOnly?'#ffcf45':'';
+  if(hlOnly){controls.target.set(0,0,0);flyTo(ISO[0]*0.82,ISO[1]*0.82,ISO[2]*0.82);}
+  applyFilter();
+};
+
+// ----- TBD list -----
+document.getElementById('tbd').onclick=()=>{
+  const col='#5d6b82';
+  panel.innerHTML=`<div class="p-head"><button class="p-close" onclick="window.__close()">✕</button>
+    <div class="p-band" style="background:${col}"></div><div class="p-stand" style="color:${col}">展位待定 TBD</div>
+    <h2>未分配展位的参展商</h2></div>
+    <div class="p-body"><p style="color:var(--muted);font-size:12.5px">以下 ${DATA.tbd.length} 家已登记参展但官方名录暂未公布展位号，故未在平面图上落位：</p>
+    ${DATA.tbd.map(t=>`<div class="chip" style="display:block;margin:6px 0">${t.name}</div>`).join('')}</div>`;
+  panel.classList.add('open');scrim.classList.add('on');
+};
+
+// ----- view toggle -----
+const v3d=document.getElementById('v3d'),v2d=document.getElementById('v2d');
+let flyTarget=null;
+function flyTo(x,y,z){flyTarget={x,y,z,t:0};}
+v3d.onclick=()=>{v3d.classList.add('on');v2d.classList.remove('on');controls.target.set(0,0,0);flyTo(ISO[0],ISO[1],ISO[2]);controls.enableRotate=true;};
+v2d.onclick=()=>{v2d.classList.add('on');v3d.classList.remove('on');controls.target.set(0,0,0);flyTo(0.1,Math.max(extW,extH)*1.15,0.1);controls.enableRotate=false;};
+
+// ----- resize / loop -----
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth,innerHeight);});
+applyFilter();
+function animate(){
+  requestAnimationFrame(animate);
+  if(flyTarget){flyTarget.t=Math.min(1,flyTarget.t+0.045);const k=1-Math.pow(1-flyTarget.t,3);
+    camera.position.lerp(new THREE.Vector3(flyTarget.x,flyTarget.y,flyTarget.z),0.12);
+    if(flyTarget.t>=1&&camera.position.distanceTo(new THREE.Vector3(flyTarget.x,flyTarget.y,flyTarget.z))<2)flyTarget=null;}
+  controls.update(); updateAnnotations(); renderer.render(scene,camera);
+}
+document.getElementById('loading').style.display='none';
+animate();
+
+// expose for screenshot harness
+window.__view=(v)=>{ v==='2d'?v2d.click():v3d.click(); };
+window.__open=(slug)=>{const b=BOOTHS.find(x=>x.slug===slug);if(b)openPanel(b);};
+const _h=location.hash;
+if(_h.includes('2d'))v2d.click();
+if(_h.includes('num'))document.getElementById('numbtn').click();
+if(_h.includes('hl'))document.getElementById('hlbtn').click();
+const _mo=_h.match(/open=([a-z0-9-]+)/); if(_mo)setTimeout(()=>window.__open(_mo[1]),120);
+</script>
+</body>
+</html>

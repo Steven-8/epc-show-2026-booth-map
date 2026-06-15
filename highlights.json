@@ -1,0 +1,122 @@
+[
+ {
+  "slug": "siemens-energy",
+  "name": "Siemens Energy",
+  "stand": "A16",
+  "zone": "A",
+  "cat": "燃机/发电",
+  "note": "燃气轮机与发电系统全球巨头，航改燃机直接同业"
+ },
+ {
+  "slug": "baker-hughes",
+  "name": "Baker Hughes",
+  "stand": "G6",
+  "zone": "G",
+  "cat": "燃机/旋转设备",
+  "note": "NovaLT 燃气轮机与压缩机驱动，旋转设备核心供应商"
+ },
+ {
+  "slug": "gulf-turbine-services",
+  "name": "Gulf Turbine Services",
+  "stand": "Q31",
+  "zone": "Q",
+  "cat": "燃机服务",
+  "note": "燃气轮机维修与服务，航改机组运维相关"
+ },
+ {
+  "slug": "turbine-x",
+  "name": "Turbine X",
+  "stand": "K11",
+  "zone": "K",
+  "cat": "燃机",
+  "note": "燃气轮机相关业务"
+ },
+ {
+  "slug": "kobelco-compressors-america-inc",
+  "name": "Kobelco Compressors America, Inc.",
+  "stand": "F31",
+  "zone": "F",
+  "cat": "旋转设备",
+  "note": "离心/螺杆压缩机，燃机驱动配套"
+ },
+ {
+  "slug": "cummins",
+  "name": "Cummins",
+  "stand": "N3",
+  "zone": "N",
+  "cat": "发电机组",
+  "note": "柴油/燃气发电机组与动力系统"
+ },
+ {
+  "slug": "aggreko",
+  "name": "Aggreko",
+  "stand": "Q32",
+  "zone": "Q",
+  "cat": "临时发电",
+  "note": "移动式发电与温控租赁，分布式电力同业"
+ },
+ {
+  "slug": "abb",
+  "name": "ABB",
+  "stand": "Q17",
+  "zone": "Q",
+  "cat": "电气/自动化",
+  "note": "电气化、自动化与驱动，电站配套"
+ },
+ {
+  "slug": "saber-power",
+  "name": "Saber Power",
+  "stand": "M17",
+  "zone": "M",
+  "cat": "电力系统",
+  "note": "电力工程与配电系统"
+ },
+ {
+  "slug": "sieyuan-electric-usa",
+  "name": "Sieyuan ELectric USA",
+  "stand": "B34",
+  "zone": "B",
+  "cat": "电力设备",
+  "note": "输配电与电力设备"
+ },
+ {
+  "slug": "distributed-power-solutions",
+  "name": "Distributed Power Solutions",
+  "stand": "F24",
+  "zone": "F",
+  "cat": "分布式发电",
+  "note": "分布式天然气发电方案，直接同业"
+ },
+ {
+  "slug": "transtech-energy",
+  "name": "TransTech Energy",
+  "stand": "N11",
+  "zone": "N",
+  "cat": "天然气/发电",
+  "note": "天然气处理与能源系统"
+ },
+ {
+  "slug": "air-liquide-engineering-construction",
+  "name": "Air Liquide Engineering & Construction",
+  "stand": "A7",
+  "zone": "A",
+  "cat": "大型EPC",
+  "note": "气体处理与能源工程总包(EPC)"
+ },
+ {
+  "slug": "powergen-controls",
+  "name": "Powergen Controls",
+  "stand": "R42",
+  "zone": "R",
+  "cat": "发电控制",
+  "note": "发电机组控制系统"
+ },
+ {
+  "slug": "buffalo-pumps",
+  "name": "Buffalo Pumps",
+  "stand": "C40",
+  "zone": "C",
+  "cat": "旋转设备",
+  "note": "离心泵，电站/油气配套旋转设备"
+ }
+]

@@ -1,0 +1,1867 @@
+[
+ {
+  "slug": "360x-staffing",
+  "name": "360X Staffing",
+  "stand": "L40"
+ },
+ {
+  "slug": "3s-engineering-design",
+  "name": "3S Engineering & Design",
+  "stand": "A13"
+ },
+ {
+  "slug": "abb",
+  "name": "ABB",
+  "stand": "Q17"
+ },
+ {
+  "slug": "access-sciences",
+  "name": "Access Sciences",
+  "stand": "R24"
+ },
+ {
+  "slug": "acutely-precision-engineering",
+  "name": "Acutech Precision Engineering",
+  "stand": "F6"
+ },
+ {
+  "slug": "advanced-geosolutions-inc",
+  "name": "Advanced Geosolutions Inc",
+  "stand": "A8"
+ },
+ {
+  "slug": "aecon",
+  "name": "AECON",
+  "stand": "R16"
+ },
+ {
+  "slug": "aerofin",
+  "name": "Aerofin",
+  "stand": "C41"
+ },
+ {
+  "slug": "aggreko",
+  "name": "Aggreko",
+  "stand": "Q32"
+ },
+ {
+  "slug": "ai-clearing",
+  "name": "AI Clearing",
+  "stand": "M41"
+ },
+ {
+  "slug": "air-liquide-engineering-construction",
+  "name": "Air Liquide Engineering & Construction",
+  "stand": "A7"
+ },
+ {
+  "slug": "air-products-membrane-solutions",
+  "name": "Air Products Membrane Solutions",
+  "stand": "R6"
+ },
+ {
+  "slug": "aize",
+  "name": "Aize",
+  "stand": "T12"
+ },
+ {
+  "slug": "alkegen",
+  "name": "Alkegen",
+  "stand": "J6"
+ },
+ {
+  "slug": "alliant-consulting",
+  "name": "Alliant Consulting",
+  "stand": "Q42"
+ },
+ {
+  "slug": "allied-steel-buildings",
+  "name": "Allied Steel Structures",
+  "stand": "Q10"
+ },
+ {
+  "slug": "alltec-lifting-systems",
+  "name": "Alltec Lifting Systems",
+  "stand": "C25"
+ },
+ {
+  "slug": "altrad",
+  "name": "Altrad",
+  "stand": "Q7"
+ },
+ {
+  "slug": "american-safety-inc",
+  "name": "American Safety Inc",
+  "stand": "T1, T2, T3, T4"
+ },
+ {
+  "slug": "american-welding-society",
+  "name": "American Welding Society",
+  "stand": "T10"
+ },
+ {
+  "slug": "ametek-obrien",
+  "name": "AMETEK O'Brien",
+  "stand": "L25"
+ },
+ {
+  "slug": "amflo",
+  "name": "AMFLO",
+  "stand": "H22"
+ },
+ {
+  "slug": "amsc",
+  "name": "AMSC",
+  "stand": "Q33"
+ },
+ {
+  "slug": "anchor-qea",
+  "name": "Anchor QEA",
+  "stand": "L34"
+ },
+ {
+  "slug": "anderson-associates",
+  "name": "Anderson Associates",
+  "stand": ""
+ },
+ {
+  "slug": "anix-valve",
+  "name": "ANIX valve",
+  "stand": "D5"
+ },
+ {
+  "slug": "anthem-technology",
+  "name": "Anthem Technology",
+  "stand": "Q31"
+ },
+ {
+  "slug": "ao-docs",
+  "name": "AO Docs",
+  "stand": "H15"
+ },
+ {
+  "slug": "ap-sensing",
+  "name": "AP Sensing",
+  "stand": "L13"
+ },
+ {
+  "slug": "apache",
+  "name": "Apache Industrial",
+  "stand": "G26"
+ },
+ {
+  "slug": "applied-bolting-technology",
+  "name": "Applied Bolting Technology™",
+  "stand": "G13"
+ },
+ {
+  "slug": "applied-technical-services",
+  "name": "Applied Technical Services",
+  "stand": "B14"
+ },
+ {
+  "slug": "aquatech",
+  "name": "Aquatech",
+  "stand": "K15"
+ },
+ {
+  "slug": "arc-guard-inc",
+  "name": "Arc Guard Inc",
+  "stand": ""
+ },
+ {
+  "slug": "ardaman-associates",
+  "name": "Ardaman & Associates",
+  "stand": "G21"
+ },
+ {
+  "slug": "ari-armaturen-usa",
+  "name": "ARI-Armaturen USA",
+  "stand": "A1"
+ },
+ {
+  "slug": "arkema",
+  "name": "Arkema",
+  "stand": "E14"
+ },
+ {
+  "slug": "armstrong-chemtech-group",
+  "name": "Armstrong Chemtech Group",
+  "stand": "C16"
+ },
+ {
+  "slug": "arta-group",
+  "name": "ARTA Group",
+  "stand": "M8"
+ },
+ {
+  "slug": "asi-group",
+  "name": "ASI Marine",
+  "stand": "A42"
+ },
+ {
+  "slug": "atk-energy-group",
+  "name": "ATK Energy Group",
+  "stand": "D34"
+ },
+ {
+  "slug": "atlantic-weld-tech",
+  "name": "Atlantic Weld Tech",
+  "stand": "C34"
+ },
+ {
+  "slug": "atlas-copco",
+  "name": "Atlas Copco",
+  "stand": "C31"
+ },
+ {
+  "slug": "aurigo-software-technologies",
+  "name": "Aurigo Software Technologies",
+  "stand": "J8"
+ },
+ {
+  "slug": "autofield",
+  "name": "AutoField",
+  "stand": "F24"
+ },
+ {
+  "slug": "avo-training",
+  "name": "AVO Training",
+  "stand": "E13"
+ },
+ {
+  "slug": "axial-fans-international",
+  "name": "Axial Fans International",
+  "stand": "N2"
+ },
+ {
+  "slug": "axios-industrial-group",
+  "name": "Axios Industrial Group",
+  "stand": "C3"
+ },
+ {
+  "slug": "axis-industries",
+  "name": "Axis Industries",
+  "stand": "C27"
+ },
+ {
+  "slug": "sb",
+  "name": "B&S Equipment",
+  "stand": "R14"
+ },
+ {
+  "slug": "baker-construction",
+  "name": "Baker Construction",
+  "stand": "C11"
+ },
+ {
+  "slug": "baker-group",
+  "name": "Baker Group",
+  "stand": "L3"
+ },
+ {
+  "slug": "baker-hughes",
+  "name": "Baker Hughes",
+  "stand": "G6"
+ },
+ {
+  "slug": "barak-brazos-engineering",
+  "name": "Barak & Brazos Engineering",
+  "stand": "Q34"
+ },
+ {
+  "slug": "bartlett-group-mkzb",
+  "name": "Bartlett Group",
+  "stand": "E24"
+ },
+ {
+  "slug": "basemap-consulting",
+  "name": "Basemap Consulting",
+  "stand": "T6"
+ },
+ {
+  "slug": "baudouin",
+  "name": "Baudouin",
+  "stand": "B18"
+ },
+ {
+  "slug": "bear-creek-ai",
+  "name": "Bear Creek AI",
+  "stand": "P3"
+ },
+ {
+  "slug": "bennett-motor-express",
+  "name": "Bennett Motor Express / BOSS",
+  "stand": "G31"
+ },
+ {
+  "slug": "bertling",
+  "name": "Bertling",
+  "stand": "N3"
+ },
+ {
+  "slug": "blast-resource-group",
+  "name": "Blast Resource Group",
+  "stand": ""
+ },
+ {
+  "slug": "bluebeam",
+  "name": "Bluebeam",
+  "stand": "M1"
+ },
+ {
+  "slug": "bluewater-energy",
+  "name": "Bluewater Energy",
+  "stand": "P42"
+ },
+ {
+  "slug": "bo-mac-contractors",
+  "name": "Bo-Mac Contractors",
+  "stand": "B21"
+ },
+ {
+  "slug": "boustead-international-heaters",
+  "name": "Boustead International Heaters",
+  "stand": "B26"
+ },
+ {
+  "slug": "brentwood-industries",
+  "name": "Brentwood Industries",
+  "stand": "F16"
+ },
+ {
+  "slug": "brock",
+  "name": "Brock",
+  "stand": "A25"
+ },
+ {
+  "slug": "bron-claude",
+  "name": "Bron and Claude",
+  "stand": "J12"
+ },
+ {
+  "slug": "buffalo-pumps",
+  "name": "Buffalo Pumps",
+  "stand": "C40"
+ },
+ {
+  "slug": "burner-combustion-systems",
+  "name": "Burner Combustion Systems",
+  "stand": "T5"
+ },
+ {
+  "slug": "c2o-group",
+  "name": "C2O Group",
+  "stand": "J18"
+ },
+ {
+  "slug": "cain-associates",
+  "name": "Cain and Associates Engineers & Constructors, Inc.",
+  "stand": "B10"
+ },
+ {
+  "slug": "cajun",
+  "name": "Cajun Industries",
+  "stand": "D10"
+ },
+ {
+  "slug": "callan-marine",
+  "name": "Callan Marine",
+  "stand": "P9"
+ },
+ {
+  "slug": "carbide-technologies-inc",
+  "name": "Carbide Technologies Inc",
+  "stand": "H10"
+ },
+ {
+  "slug": "cardinal-compliance",
+  "name": "Cardinal Compliance",
+  "stand": ""
+ },
+ {
+  "slug": "carver-companies",
+  "name": "Carver Companies",
+  "stand": "H9"
+ },
+ {
+  "slug": "catalyst-handling",
+  "name": "Catalyst Handling",
+  "stand": "D15"
+ },
+ {
+  "slug": "cavenders",
+  "name": "Cavender's",
+  "stand": "J1"
+ },
+ {
+  "slug": "cco-certification",
+  "name": "CCO Certification",
+  "stand": "H16"
+ },
+ {
+  "slug": "ced",
+  "name": "CED",
+  "stand": "N31"
+ },
+ {
+  "slug": "central-seeding",
+  "name": "Central Seeding",
+  "stand": "A15"
+ },
+ {
+  "slug": "certerra-rone",
+  "name": "Certerra",
+  "stand": "C8"
+ },
+ {
+  "slug": "charps",
+  "name": "Charps",
+  "stand": "C27"
+ },
+ {
+  "slug": "civ-robotics",
+  "name": "CIV Robotics",
+  "stand": "L42"
+ },
+ {
+  "slug": "clampon",
+  "name": "ClampOn",
+  "stand": "E26"
+ },
+ {
+  "slug": "co-ax",
+  "name": "co-ax",
+  "stand": "G40"
+ },
+ {
+  "slug": "compucycle",
+  "name": "Compucycle",
+  "stand": "R32"
+ },
+ {
+  "slug": "conco",
+  "name": "Conco Services",
+  "stand": "B4"
+ },
+ {
+  "slug": "constant-technologies",
+  "name": "Constant Technologies",
+  "stand": "P2"
+ },
+ {
+  "slug": "cooling-tower-depot",
+  "name": "Cooling Tower Depot",
+  "stand": "E31"
+ },
+ {
+  "slug": "corbinsoft",
+  "name": "Corbinsoft",
+  "stand": "A20"
+ },
+ {
+  "slug": "coronet-scaffolding",
+  "name": "Coronet Scaffolding",
+  "stand": "G25"
+ },
+ {
+  "slug": "corrpro",
+  "name": "Corrpro",
+  "stand": "F21"
+ },
+ {
+  "slug": "creative-composites-group-1",
+  "name": "Creative Composites Group",
+  "stand": "E24"
+ },
+ {
+  "slug": "creative-composites-group-l2gz",
+  "name": "Creative Composites Group",
+  "stand": "H10"
+ },
+ {
+  "slug": "credera",
+  "name": "Credera",
+  "stand": "T20"
+ },
+ {
+  "slug": "cryogenic-machinery-corp",
+  "name": "Cryogenic Machinery Corp.",
+  "stand": "D30"
+ },
+ {
+  "slug": "cryoperl",
+  "name": "Cryoperl",
+  "stand": "F14"
+ },
+ {
+  "slug": "csa-group",
+  "name": "CSA Group",
+  "stand": "T22"
+ },
+ {
+  "slug": "csoft-technologies",
+  "name": "CSoft Technologies",
+  "stand": ""
+ },
+ {
+  "slug": "cssi",
+  "name": "CSSI",
+  "stand": ""
+ },
+ {
+  "slug": "cuecrane",
+  "name": "CueCrane",
+  "stand": "D35"
+ },
+ {
+  "slug": "cummins",
+  "name": "Cummins",
+  "stand": "N3"
+ },
+ {
+  "slug": "curtiss-wright",
+  "name": "Curtiss-Wright",
+  "stand": "L1"
+ },
+ {
+  "slug": "cyber-hawk",
+  "name": "Cyberhawk",
+  "stand": "M10"
+ },
+ {
+  "slug": "d-volt-co",
+  "name": "D Volt co",
+  "stand": "F40"
+ },
+ {
+  "slug": "danmar-industries",
+  "name": "Danmar Industries",
+  "stand": "A9"
+ },
+ {
+  "slug": "ddg",
+  "name": "DDG",
+  "stand": "R5"
+ },
+ {
+  "slug": "dearborn-companies",
+  "name": "Dearborn Companies",
+  "stand": "M25"
+ },
+ {
+  "slug": "deep-south-crane-rigging",
+  "name": "Deep South Crane & Rigging",
+  "stand": "K14"
+ },
+ {
+  "slug": "del-mar-safety-solutions",
+  "name": "Del Mar Safety Solutions",
+  "stand": "R9"
+ },
+ {
+  "slug": "delta-360",
+  "name": "Delta 360",
+  "stand": "M12"
+ },
+ {
+  "slug": "delta-field-services",
+  "name": "Delta Field Services",
+  "stand": "A33"
+ },
+ {
+  "slug": "delta-machine-ironworks",
+  "name": "Delta Machine & Ironworks",
+  "stand": "F3"
+ },
+ {
+  "slug": "delta-screens",
+  "name": "Delta Screens",
+  "stand": ""
+ },
+ {
+  "slug": "dfi-piling",
+  "name": "DFI Piling",
+  "stand": "F11"
+ },
+ {
+  "slug": "otc-industrial-technologies",
+  "name": "DIRECTAIR, an OTC Industrial Technologies Product",
+  "stand": "B17"
+ },
+ {
+  "slug": "distributed-power-solutions",
+  "name": "Distributed Power Solutions",
+  "stand": "F24"
+ },
+ {
+  "slug": "dk-lok",
+  "name": "DK-LOK USA",
+  "stand": "M19"
+ },
+ {
+  "slug": "dow",
+  "name": "Dow",
+  "stand": "N9"
+ },
+ {
+  "slug": "dss",
+  "name": "DSS Manufacturing & Distribution",
+  "stand": "E17"
+ },
+ {
+  "slug": "dws-energy",
+  "name": "DWS Energy",
+  "stand": "H6"
+ },
+ {
+  "slug": "dynamic-systems-inc",
+  "name": "Dynamic Systems Inc",
+  "stand": "A40"
+ },
+ {
+  "slug": "e-plus-3d",
+  "name": "E-Plus-3D",
+  "stand": "B6"
+ },
+ {
+  "slug": "eae-usa",
+  "name": "EAE USA",
+  "stand": "K11"
+ },
+ {
+  "slug": "eagle-burgmann-freudenberg-flow-technologies",
+  "name": "Eagle Burgmann / Freudenberg Flow Technologies",
+  "stand": "J17"
+ },
+ {
+  "slug": "eastern-pneumatics-hydraulics",
+  "name": "Eastern Pneumatics & Hydraulics",
+  "stand": "C23"
+ },
+ {
+  "slug": "ecobridge-infrastructure-services",
+  "name": "Ecobridge Infrastructure Services",
+  "stand": "D3"
+ },
+ {
+  "slug": "electrical-builders-ebi",
+  "name": "Electrical Builders (EBI)",
+  "stand": "T15"
+ },
+ {
+  "slug": "eli-logistix",
+  "name": "Eli Logistix",
+  "stand": ""
+ },
+ {
+  "slug": "enerbine",
+  "name": "Enerbine",
+  "stand": "H19"
+ },
+ {
+  "slug": "engiso-ag-crane-equipment-co",
+  "name": "Engiso and AG Crane & Equipment Co",
+  "stand": "E3"
+ },
+ {
+  "slug": "enverus",
+  "name": "Enverus",
+  "stand": "B40"
+ },
+ {
+  "slug": "environmental-noise-control",
+  "name": "Environmental Noise Control",
+  "stand": "G15"
+ },
+ {
+  "slug": "enviroserve",
+  "name": "Enviroserve",
+  "stand": ""
+ },
+ {
+  "slug": "equipment-share",
+  "name": "EquipmentShare",
+  "stand": "R10"
+ },
+ {
+  "slug": "ericsson",
+  "name": "Ericsson",
+  "stand": "Q16"
+ },
+ {
+  "slug": "esr-motor-systems",
+  "name": "ESR Motor Systems",
+  "stand": "R15"
+ },
+ {
+  "slug": "evers-sons",
+  "name": "Evers and Sons",
+  "stand": "E15"
+ },
+ {
+  "slug": "evonik",
+  "name": "Evonik",
+  "stand": "F14"
+ },
+ {
+  "slug": "evosite",
+  "name": "Evosite",
+  "stand": ""
+ },
+ {
+  "slug": "eyrus",
+  "name": "Eyrus",
+  "stand": ""
+ },
+ {
+  "slug": "falltech-1",
+  "name": "FallTech",
+  "stand": "C33"
+ },
+ {
+  "slug": "falltech-bwjo",
+  "name": "FallTech",
+  "stand": "C33"
+ },
+ {
+  "slug": "ferguson-industrial",
+  "name": "Ferguson Industrial",
+  "stand": "E12"
+ },
+ {
+  "slug": "finish-line-staffing",
+  "name": "Finish Line Staffing",
+  "stand": "R7"
+ },
+ {
+  "slug": "first-rescue-safety-training",
+  "name": "First In Rescue Safety and Training",
+  "stand": "J5"
+ },
+ {
+  "slug": "five-s-group",
+  "name": "Five-S Group",
+  "stand": "E10"
+ },
+ {
+  "slug": "forget",
+  "name": "Forgen",
+  "stand": "P27"
+ },
+ {
+  "slug": "fox-tank-company",
+  "name": "Fox Tank Company",
+  "stand": "T8"
+ },
+ {
+  "slug": "freeport-welding-fabricating",
+  "name": "Freeport Welding & Fabricating",
+  "stand": "F4"
+ },
+ {
+  "slug": "future-pipe-industries",
+  "name": "Future Pipe Industries",
+  "stand": "D31"
+ },
+ {
+  "slug": "g4-geomatic",
+  "name": "G4 Geomatic",
+  "stand": "R25"
+ },
+ {
+  "slug": "gajeske",
+  "name": "Gajeske",
+  "stand": "R20"
+ },
+ {
+  "slug": "gallagher-fluid-seal",
+  "name": "Gallagher Fluid Seal",
+  "stand": "B33"
+ },
+ {
+  "slug": "gas-innovations",
+  "name": "Gas Innovations",
+  "stand": "L6"
+ },
+ {
+  "slug": "generon",
+  "name": "Generon",
+  "stand": "Q13"
+ },
+ {
+  "slug": "gesa",
+  "name": "GESA",
+  "stand": "N16"
+ },
+ {
+  "slug": "ghd",
+  "name": "GHD",
+  "stand": "C5"
+ },
+ {
+  "slug": "goetze-valves",
+  "name": "Goetze Valves",
+  "stand": "E7"
+ },
+ {
+  "slug": "goformz",
+  "name": "Goformz",
+  "stand": "A15"
+ },
+ {
+  "slug": "group-contractors",
+  "name": "Group Contractors",
+  "stand": "M3"
+ },
+ {
+  "slug": "gulf-coast-underground",
+  "name": "Gulf Coast Underground",
+  "stand": "Q9"
+ },
+ {
+  "slug": "gulf-coast-wrap",
+  "name": "Gulf Coast Wrap",
+  "stand": "G8"
+ },
+ {
+  "slug": "gulf-turbine-services",
+  "name": "Gulf Turbine Services",
+  "stand": "Q31"
+ },
+ {
+  "slug": "gxc",
+  "name": "GXC",
+  "stand": "T21"
+ },
+ {
+  "slug": "h-m-industrial-epc",
+  "name": "H+M Industrial EPC",
+  "stand": "D13"
+ },
+ {
+  "slug": "habonim",
+  "name": "Habonim",
+  "stand": "M9"
+ },
+ {
+  "slug": "hammelmann",
+  "name": "Hammelmann",
+  "stand": "D32"
+ },
+ {
+  "slug": "hammertech-r8tq",
+  "name": "Hammertech",
+  "stand": "P5"
+ },
+ {
+  "slug": "hansa-meyer-roli-projects",
+  "name": "Hansa Meyer Roli Projects",
+  "stand": "B42"
+ },
+ {
+  "slug": "hason",
+  "name": "Hason",
+  "stand": "B24"
+ },
+ {
+  "slug": "hawk-epc",
+  "name": "Hawk EPC",
+  "stand": "L7"
+ },
+ {
+  "slug": "heldenfelds-enterprises",
+  "name": "Heldenfels Enterprises",
+  "stand": "F34"
+ },
+ {
+  "slug": "herc-rentals",
+  "name": "Herc Rentals",
+  "stand": "Q8"
+ },
+ {
+  "slug": "holt-industrial-systems",
+  "name": "Holt Industrial Systems",
+  "stand": ""
+ },
+ {
+  "slug": "hotard-coaches",
+  "name": "Hotard Coaches",
+  "stand": "A24"
+ },
+ {
+  "slug": "hy-lok",
+  "name": "Hy-Lok",
+  "stand": "L20"
+ },
+ {
+  "slug": "hydraulic-technologies-1",
+  "name": "Hydraulic Technologies",
+  "stand": "Q31"
+ },
+ {
+  "slug": "hydraulic-technologies-dsy7",
+  "name": "Hydraulic Technologies",
+  "stand": "C17"
+ },
+ {
+  "slug": "hytorc",
+  "name": "HYTORC",
+  "stand": "Q27"
+ },
+ {
+  "slug": "-soft-craft-solutions",
+  "name": "I&I Soft Craft Solutions",
+  "stand": ""
+ },
+ {
+  "slug": "iac",
+  "name": "IAC",
+  "stand": "N1"
+ },
+ {
+  "slug": "idom",
+  "name": "Idom",
+  "stand": "R40"
+ },
+ {
+  "slug": "iesg-solutions",
+  "name": "IESG Solutions",
+  "stand": "A6"
+ },
+ {
+  "slug": "imsco",
+  "name": "IMSCO",
+  "stand": "M26"
+ },
+ {
+  "slug": "incontrol-systems-inc",
+  "name": "inControl Systems Inc",
+  "stand": "J12"
+ },
+ {
+  "slug": "industrial-fabrics",
+  "name": "Industrial Fabrics",
+  "stand": "R30"
+ },
+ {
+  "slug": "industrial-info-resources",
+  "name": "Industrial Info Resources",
+  "stand": "D8"
+ },
+ {
+  "slug": "industrial-matrix",
+  "name": "Industrial Matrix",
+  "stand": "P15"
+ },
+ {
+  "slug": "-2",
+  "name": "Industrial Tent Systems",
+  "stand": "Q6"
+ },
+ {
+  "slug": "integrated-circuit-solutions",
+  "name": "Integrated Circuit Solutions",
+  "stand": "H17"
+ },
+ {
+  "slug": "intellispec",
+  "name": "intelliSPEC",
+  "stand": "A3"
+ },
+ {
+  "slug": "ipx",
+  "name": "IpX",
+  "stand": "T7"
+ },
+ {
+  "slug": "isco-industries",
+  "name": "ISCO Industries",
+  "stand": "D6"
+ },
+ {
+  "slug": "itp-interpipe",
+  "name": "ITP Interpipe",
+  "stand": "F2"
+ },
+ {
+  "slug": "jd-fields-company-inc",
+  "name": "JD Fields & Company, Inc.",
+  "stand": "F8"
+ },
+ {
+  "slug": "jensen-hughes",
+  "name": "Jensen Hughes",
+  "stand": "E34"
+ },
+ {
+  "slug": "jm-test-systems",
+  "name": "JM Test Systems",
+  "stand": "B8"
+ },
+ {
+  "slug": "jobtrax",
+  "name": "JobTrax",
+  "stand": "A15"
+ },
+ {
+  "slug": "joetex",
+  "name": "JOETEX",
+  "stand": "R31"
+ },
+ {
+  "slug": "john-lawrie-tubulars",
+  "name": "John Lawrie Tubulars",
+  "stand": "N42"
+ },
+ {
+  "slug": "jt-thorpe",
+  "name": "JT Thorpe",
+  "stand": "M18"
+ },
+ {
+  "slug": "kahua",
+  "name": "Kahua",
+  "stand": "T16"
+ },
+ {
+  "slug": "keller",
+  "name": "Keller",
+  "stand": "P24"
+ },
+ {
+  "slug": "kennedy-valve-company",
+  "name": "Kennedy Valve Company",
+  "stand": "M33"
+ },
+ {
+  "slug": "kinley-construction",
+  "name": "Kinley Construction",
+  "stand": "N25"
+ },
+ {
+  "slug": "knx-utility-services",
+  "name": "KNX Utility Services",
+  "stand": "D15"
+ },
+ {
+  "slug": "kobelco-compressors-america-inc",
+  "name": "Kobelco Compressors America, Inc.",
+  "stand": "F31"
+ },
+ {
+  "slug": "kotra-korea-trade-investment-promotion-agency",
+  "name": "KOTRA (Korea Trade-Investment Promotion Agency)",
+  "stand": "H2"
+ },
+ {
+  "slug": "koch-engineered-solutions",
+  "name": "KSPS, A Koch Engineered Solutions Business",
+  "stand": "C4"
+ },
+ {
+  "slug": "kt-black",
+  "name": "KT Black",
+  "stand": "E2"
+ },
+ {
+  "slug": "ladish-valves",
+  "name": "Ladish Valves",
+  "stand": "L5"
+ },
+ {
+  "slug": "lanier-associates-consulting-engineers",
+  "name": "Lanier & Associates Consulting Engineers",
+  "stand": "B1"
+ },
+ {
+  "slug": "legacy-building-solutions",
+  "name": "Legacy Building Solutions",
+  "stand": "G24"
+ },
+ {
+  "slug": "lewa-america",
+  "name": "LEWA America",
+  "stand": "D24"
+ },
+ {
+  "slug": "lgh",
+  "name": "LGH",
+  "stand": "M24"
+ },
+ {
+  "slug": "south-coast-carriers",
+  "name": "LGX Freight Solutions",
+  "stand": "A30"
+ },
+ {
+  "slug": "lindaptor",
+  "name": "Lindaptor",
+  "stand": "E44"
+ },
+ {
+  "slug": "lodge-lumber",
+  "name": "Lodge Lumber",
+  "stand": "P8"
+ },
+ {
+  "slug": "lokring",
+  "name": "Lokring",
+  "stand": "E23"
+ },
+ {
+  "slug": "louisiana-concrete-products",
+  "name": "Louisiana Concrete Products",
+  "stand": "F12"
+ },
+ {
+  "slug": "louisiana-scrap-metals",
+  "name": "Louisiana Scrap Metals",
+  "stand": "F26"
+ },
+ {
+  "slug": "mactech-field-machining",
+  "name": "Mactech Field Machining",
+  "stand": "Q25"
+ },
+ {
+  "slug": "maddox",
+  "name": "Maddox",
+  "stand": "J11"
+ },
+ {
+  "slug": "magnum-piering",
+  "name": "Magnum Piering",
+  "stand": "L8"
+ },
+ {
+  "slug": "malcolm-drilling",
+  "name": "Malcolm Drilling Company",
+  "stand": "E27"
+ },
+ {
+  "slug": "management-controls",
+  "name": "Management Controls",
+  "stand": "P6"
+ },
+ {
+  "slug": "marex-services-group",
+  "name": "Marex Services Group",
+  "stand": "B32"
+ },
+ {
+  "slug": "marking-services-inc",
+  "name": "Marking Services, Inc",
+  "stand": "L8"
+ },
+ {
+  "slug": "marmon-industrial-water",
+  "name": "Marmon Industrial Water",
+  "stand": "C14"
+ },
+ {
+  "slug": "marvel-tech",
+  "name": "Marvel-Tech",
+  "stand": "D27"
+ },
+ {
+  "slug": "mascot-valves",
+  "name": "Mascot Valves",
+  "stand": "P10"
+ },
+ {
+  "slug": "mason-construction",
+  "name": "Mason Construction",
+  "stand": "M27"
+ },
+ {
+  "slug": "matrix-service",
+  "name": "Matrix Service",
+  "stand": "P16"
+ },
+ {
+  "slug": "mayhorn-safety",
+  "name": "Mayhorn Safety",
+  "stand": "A12"
+ },
+ {
+  "slug": "means-method-engineering",
+  "name": "Means and Method Engineering",
+  "stand": "Q12"
+ },
+ {
+  "slug": "megasteel-group",
+  "name": "Megasteel Group",
+  "stand": "T9"
+ },
+ {
+  "slug": "meritum-energy",
+  "name": "Meritum Energy",
+  "stand": "M16"
+ },
+ {
+  "slug": "milestone-project-services",
+  "name": "Milestone Project Services",
+  "stand": "G11"
+ },
+ {
+  "slug": "milwaukee",
+  "name": "Milwaukee",
+  "stand": "Q30"
+ },
+ {
+  "slug": "mistras",
+  "name": "Mistras",
+  "stand": "Q1"
+ },
+ {
+  "slug": "mixonsite",
+  "name": "MixOnSite",
+  "stand": "L21"
+ },
+ {
+  "slug": "mmr-group",
+  "name": "MMR Group, Inc.",
+  "stand": "D9"
+ },
+ {
+  "slug": "morris-shea-bridge-co",
+  "name": "Morris-Shea Bridge Co.",
+  "stand": "M23"
+ },
+ {
+  "slug": "mott-corporation",
+  "name": "Mott Corporation",
+  "stand": "L24"
+ },
+ {
+  "slug": "nanotech-materials",
+  "name": "Nanotech Materials",
+  "stand": "J2/3"
+ },
+ {
+  "slug": "nefco",
+  "name": "NEFCO",
+  "stand": "H7"
+ },
+ {
+  "slug": "nelson",
+  "name": "NELSON",
+  "stand": "B3"
+ },
+ {
+  "slug": "netzsch",
+  "name": "NETZSCH",
+  "stand": ""
+ },
+ {
+  "slug": "nidec-conversion",
+  "name": "Nidec Conversion",
+  "stand": "G7"
+ },
+ {
+  "slug": "nitrogen-services",
+  "name": "Nitrogen Services",
+  "stand": "L17"
+ },
+ {
+  "slug": "norit-activated-carbon",
+  "name": "Norit Activated Carbon",
+  "stand": "L16"
+ },
+ {
+  "slug": "npki",
+  "name": "NPKI",
+  "stand": "N8"
+ },
+ {
+  "slug": "nv5",
+  "name": "NV5",
+  "stand": "P33"
+ },
+ {
+  "slug": "odin",
+  "name": "ODIN",
+  "stand": "C26"
+ },
+ {
+  "slug": "omega-365",
+  "name": "Omega 365",
+  "stand": "L45"
+ },
+ {
+  "slug": "operating-engineers-local-450",
+  "name": "Operating Engineers Local 450",
+  "stand": "E32"
+ },
+ {
+  "slug": "orion-strategies",
+  "name": "Orion Strategies",
+  "stand": "C3"
+ },
+ {
+  "slug": "owens-corning",
+  "name": "Owens Corning",
+  "stand": "G33"
+ },
+ {
+  "slug": "pac",
+  "name": "PAC",
+  "stand": "N8"
+ },
+ {
+  "slug": "panasonic-connect",
+  "name": "Panasonic Connect",
+  "stand": "E2"
+ },
+ {
+  "slug": "pelican-energy-consultants",
+  "name": "Pelican Energy Consultants",
+  "stand": "D12"
+ },
+ {
+  "slug": "competency-alliance",
+  "name": "PetroSkills",
+  "stand": "B13"
+ },
+ {
+  "slug": "phillips-heavy-inc",
+  "name": "Phillips Heavy, Inc.",
+  "stand": "E8"
+ },
+ {
+  "slug": "piertech-systems",
+  "name": "Piertech Systems",
+  "stand": "J7"
+ },
+ {
+  "slug": "pileworks",
+  "name": "Pileworks",
+  "stand": "A10"
+ },
+ {
+  "slug": "piping-enterprise",
+  "name": "Piping Enterprise Company",
+  "stand": "B4"
+ },
+ {
+  "slug": "polycoat-products",
+  "name": "Polycoat Products",
+  "stand": "M2"
+ },
+ {
+  "slug": "portabull-fuel",
+  "name": "PortaBull Fuel",
+  "stand": "F12"
+ },
+ {
+  "slug": "powell-planning-consulting",
+  "name": "Powell Planning and Consulting",
+  "stand": "B2"
+ },
+ {
+  "slug": "powergen-controls",
+  "name": "Powergen Controls",
+  "stand": "R42"
+ },
+ {
+  "slug": "ppg-l7mb",
+  "name": "PPG",
+  "stand": "H14"
+ },
+ {
+  "slug": "pqsi-power-quality-solutions-international",
+  "name": "PQSI Power Quality Solutions International",
+  "stand": "F13"
+ },
+ {
+  "slug": "precast-concrete",
+  "name": "Precast Concrete",
+  "stand": "B11"
+ },
+ {
+  "slug": "primary-flow-signal-inc",
+  "name": "Primary Flow Signal, Inc.",
+  "stand": "E16"
+ },
+ {
+  "slug": "procore-technologies",
+  "name": "Procore Technologies",
+  "stand": "G42"
+ },
+ {
+  "slug": "prosource",
+  "name": "Prosource.it",
+  "stand": ""
+ },
+ {
+  "slug": "psb-industries",
+  "name": "PSB Industries",
+  "stand": "E5"
+ },
+ {
+  "slug": "purchaserai",
+  "name": "purchaser.ai",
+  "stand": ""
+ },
+ {
+  "slug": "radix-cable-wire",
+  "name": "Radix Cable & Wire",
+  "stand": "N13"
+ },
+ {
+  "slug": "rain-rent",
+  "name": "Rain For Rent",
+  "stand": "N24"
+ },
+ {
+  "slug": "recon",
+  "name": "ReCon Management Services, Inc.",
+  "stand": "A14"
+ },
+ {
+  "slug": "red-sky-lighting",
+  "name": "Red Sky Lighting",
+  "stand": "F6"
+ },
+ {
+  "slug": "redguard",
+  "name": "RedGuard",
+  "stand": "F7"
+ },
+ {
+  "slug": "reinhausen-manufacturing-inc",
+  "name": "Reinhausen",
+  "stand": "N26"
+ },
+ {
+  "slug": "relevant",
+  "name": "Relevant",
+  "stand": "C10"
+ },
+ {
+  "slug": "reloquest",
+  "name": "Reloquest",
+  "stand": "C32"
+ },
+ {
+  "slug": "rentaload",
+  "name": "Rentaload USA",
+  "stand": "F10"
+ },
+ {
+  "slug": "rigid",
+  "name": "Rigid",
+  "stand": "A11"
+ },
+ {
+  "slug": "rmis",
+  "name": "RMIS",
+  "stand": "C2"
+ },
+ {
+  "slug": "rollcon",
+  "name": "Rollcon",
+  "stand": "C24"
+ },
+ {
+  "slug": "romtec-utilities",
+  "name": "Romtec Utilities",
+  "stand": "E7"
+ },
+ {
+  "slug": "rschmitt-enertec",
+  "name": "RSchmitt Enertec",
+  "stand": "M43"
+ },
+ {
+  "slug": "saber-power",
+  "name": "Saber Power",
+  "stand": "M17"
+ },
+ {
+  "slug": "sagacity",
+  "name": "Sagacity",
+  "stand": "N27"
+ },
+ {
+  "slug": "sancon-commissioning",
+  "name": "Sancon Commissioning",
+  "stand": "P4"
+ },
+ {
+  "slug": "sapphire-gas-solutions",
+  "name": "Sapphire Gas Solutions",
+  "stand": "G17"
+ },
+ {
+  "slug": "scs-engineers",
+  "name": "SCS Engineers",
+  "stand": "H20"
+ },
+ {
+  "slug": "scv-valves",
+  "name": "SCV Valves",
+  "stand": "B30"
+ },
+ {
+  "slug": "seal-company",
+  "name": "Seal Company",
+  "stand": "G3"
+ },
+ {
+  "slug": "sealevel-construction",
+  "name": "Sealevel Construction",
+  "stand": "N30"
+ },
+ {
+  "slug": "sendero-energy-services",
+  "name": "Sendero Energy Services",
+  "stand": "E9"
+ },
+ {
+  "slug": "siad-americas",
+  "name": "SIAD Americas",
+  "stand": "P11"
+ },
+ {
+  "slug": "sidus-solutions",
+  "name": "Sidus Solutions",
+  "stand": "M18"
+ },
+ {
+  "slug": "siemens-energy",
+  "name": "Siemens Energy",
+  "stand": "A16"
+ },
+ {
+  "slug": "sieyuan-electric-usa",
+  "name": "Sieyuan ELectric USA",
+  "stand": "B34"
+ },
+ {
+  "slug": "siltec-usa",
+  "name": "SILTEC USA",
+  "stand": "E8"
+ },
+ {
+  "slug": "sindri-ai",
+  "name": "Sindri AI",
+  "stand": ""
+ },
+ {
+  "slug": "sitewide-project-solutions",
+  "name": "Sitewide Project Solutions",
+  "stand": "L11"
+ },
+ {
+  "slug": "skydio",
+  "name": "Skydio",
+  "stand": "M33"
+ },
+ {
+  "slug": "smarter-labor-management",
+  "name": "Smarter Labor Management",
+  "stand": ""
+ },
+ {
+  "slug": "smith-burgess-process-safety-consulting",
+  "name": "Smith & Burgess Process Safety Consulting",
+  "stand": "B7"
+ },
+ {
+  "slug": "solar-camera",
+  "name": "Solar Camera",
+  "stand": "D1"
+ },
+ {
+  "slug": "solutions-sample-systems",
+  "name": "Solutions Sample Systems",
+  "stand": "J13"
+ },
+ {
+  "slug": "southern-lifting-hoisting",
+  "name": "Southern Lifting & Hoisting",
+  "stand": "H1"
+ },
+ {
+  "slug": "spirax-sarco",
+  "name": "Spirax Sarco",
+  "stand": "A21"
+ },
+ {
+  "slug": "spraying-systems",
+  "name": "Spraying Systems Co.",
+  "stand": "N10"
+ },
+ {
+  "slug": "starcon",
+  "name": "Starcon",
+  "stand": "Q10"
+ },
+ {
+  "slug": "stats-group-international",
+  "name": "STATS Group International",
+  "stand": "L25"
+ },
+ {
+  "slug": "stooss-usa",
+  "name": "Stooss USA",
+  "stand": "L15"
+ },
+ {
+  "slug": "seal-life-industries",
+  "name": "STOPAQ",
+  "stand": "L23"
+ },
+ {
+  "slug": "stormgeo-inc",
+  "name": "StormGeo, Inc.",
+  "stand": "M32"
+ },
+ {
+  "slug": "straight-line-industrial-services",
+  "name": "Straight line Industrial Services",
+  "stand": ""
+ },
+ {
+  "slug": "superior-construction-services",
+  "name": "Superior Construction Services",
+  "stand": "N33"
+ },
+ {
+  "slug": "superlok-usa",
+  "name": "Superlok USA",
+  "stand": "J4"
+ },
+ {
+  "slug": "surewerx",
+  "name": "Surewerx",
+  "stand": "N32"
+ },
+ {
+  "slug": "swagelok",
+  "name": "Swagelok",
+  "stand": "M11"
+ },
+ {
+  "slug": "sycon-international",
+  "name": "SYCON International",
+  "stand": "P30"
+ },
+ {
+  "slug": "sytek-electric-corporation",
+  "name": "Sytek Electric Corporation",
+  "stand": "A31"
+ },
+ {
+  "slug": "tang-company",
+  "name": "Tang+ Company",
+  "stand": "F42"
+ },
+ {
+  "slug": "tdg-energy-services",
+  "name": "TDG Energy Services",
+  "stand": "D4"
+ },
+ {
+  "slug": "techline-mfg",
+  "name": "TechLine Mfg",
+  "stand": "L31"
+ },
+ {
+  "slug": "technical-tool-boxes",
+  "name": "Technical Toolboxes",
+  "stand": "J14"
+ },
+ {
+  "slug": "technology-transfer-services",
+  "name": "Technology Transfer Services",
+  "stand": "E6"
+ },
+ {
+  "slug": "tex-fab",
+  "name": "Tex-Fab",
+  "stand": "B15"
+ },
+ {
+  "slug": "texas-airsystems",
+  "name": "Texas Airsystems",
+  "stand": "C13"
+ },
+ {
+  "slug": "bergaila-companies",
+  "name": "The Bergaila Companies",
+  "stand": "A5"
+ },
+ {
+  "slug": "thermon",
+  "name": "Thermon",
+  "stand": "C12"
+ },
+ {
+  "slug": "torcsill",
+  "name": "TorcSill",
+  "stand": "C9"
+ },
+ {
+  "slug": "total-safety",
+  "name": "Total Safety",
+  "stand": "F23"
+ },
+ {
+  "slug": "trackunit",
+  "name": "Trackunit",
+  "stand": "J16"
+ },
+ {
+  "slug": "transtech-energy",
+  "name": "TransTech Energy",
+  "stand": "N11"
+ },
+ {
+  "slug": "triarc-tank",
+  "name": "Triarc Tank",
+  "stand": "B31"
+ },
+ {
+  "slug": "tritoric",
+  "name": "Tritorc",
+  "stand": "J2"
+ },
+ {
+  "slug": "ttl",
+  "name": "TTL",
+  "stand": "A32"
+ },
+ {
+  "slug": "turbine-x",
+  "name": "Turbine X",
+  "stand": "K11"
+ },
+ {
+  "slug": "tvs-engineering",
+  "name": "TVS Engineering",
+  "stand": "B9"
+ },
+ {
+  "slug": "twc-walworth",
+  "name": "TWC The Valve Co.",
+  "stand": "C6"
+ },
+ {
+  "slug": "twinco-industrial",
+  "name": "Twinco Industrial Products Corp.",
+  "stand": "R26"
+ },
+ {
+  "slug": "txla-systems-c23v",
+  "name": "Txla Systems",
+  "stand": "G1"
+ },
+ {
+  "slug": "tylok-international",
+  "name": "Tylok International",
+  "stand": "F30"
+ },
+ {
+  "slug": "unbrako",
+  "name": "UNBRAKO - DEEPAK FASTENERS LTD",
+  "stand": "F33"
+ },
+ {
+  "slug": "fusion-specialty-systems",
+  "name": "US Fusion Specialty Systems",
+  "stand": "Q14"
+ },
+ {
+  "slug": "helicals",
+  "name": "US Helicals",
+  "stand": "E4"
+ },
+ {
+  "slug": "usa-debusk",
+  "name": "USA DeBusk",
+  "stand": "D11"
+ },
+ {
+  "slug": "usa-industries",
+  "name": "USA Industries",
+  "stand": "P13"
+ },
+ {
+  "slug": "veristar-energy",
+  "name": "Veristar Energy",
+  "stand": "J9"
+ },
+ {
+  "slug": "wt-byler",
+  "name": "W.T. Byler",
+  "stand": "R11"
+ },
+ {
+  "slug": "waskey",
+  "name": "Waskey",
+  "stand": "N12"
+ },
+ {
+  "slug": "waterfleet",
+  "name": "Waterfleet",
+  "stand": "M5"
+ },
+ {
+  "slug": "well-water-solutions-rentals-inc",
+  "name": "Well Water Solutions and Rentals Inc",
+  "stand": "Q15"
+ },
+ {
+  "slug": "williams-valve",
+  "name": "Williams Valve",
+  "stand": "L26"
+ },
+ {
+  "slug": "woven-metal-products",
+  "name": "Woven Metal Products",
+  "stand": "N7"
+ },
+ {
+  "slug": "wr-transformers",
+  "name": "WR Transformers",
+  "stand": "L24"
+ },
+ {
+  "slug": "wrench-solutions",
+  "name": "Wrench Solutions",
+  "stand": "P25"
+ },
+ {
+  "slug": "wsnelson",
+  "name": "WSNelson",
+  "stand": "B3"
+ },
+ {
+  "slug": "wurth-industries",
+  "name": "W&uuml;rth Industries",
+  "stand": "F32"
+ },
+ {
+  "slug": "wyndham-hotel-resorts",
+  "name": "Wyndham Hotel & Resorts",
+  "stand": "C3"
+ },
+ {
+  "slug": "xait",
+  "name": "Xait",
+  "stand": "T17"
+ },
+ {
+  "slug": "xylem",
+  "name": "xylem",
+  "stand": "D15"
+ },
+ {
+  "slug": "zetaquest-technologies",
+  "name": "ZetaQuest Technologies",
+  "stand": "P33"
+ }
+]
