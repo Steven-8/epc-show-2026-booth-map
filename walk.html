@@ -85,9 +85,10 @@
   <input class="search" id="q" placeholder="搜索公司 / 展位号…">
   <div class="chips">
     <button data-f="all" class="on">全部</button>
+    <button data-f="gt">🔥 燃机相关</button>
+    <button data-f="int">⭐ 感兴趣</button>
     <button data-f="todo">未访问</button>
     <button data-f="done">已访问</button>
-    <button data-f="int">⭐ 感兴趣</button>
     <select id="catf"><option value="">全部类型</option></select>
     <select id="sortf"><option value="booth">按展位号</option><option value="name">按公司名</option></select>
   </div>
@@ -140,6 +141,7 @@ function render(){
     if(filter==='todo'&&s.visited)return false;
     if(filter==='done'&&!s.visited)return false;
     if(filter==='int'&&!s.interested)return false;
+    if(filter==='gt'&&!(w.rel==='high'||w.rel==='med'))return false;
     if(catv&&w.role!==catv)return false;
     if(text){const t=(w.name+' '+(w.stand||'')+' '+(w.zone||'')).toLowerCase();if(!t.includes(text))return false;}
     return true;
@@ -160,7 +162,7 @@ function card(w){
     <div class="whead">
       <input type="checkbox" class="wvisit" ${s.visited?'checked':''} title="已访问">
       <div class="wtitle"><span class="wname">${esc(w.name)} ${s.interested?'<span class="star">★</span>':''}</span>
-        <span class="wbooth">展位 ${esc(w.stand)} · 分区 ${esc(w.zone)}</span></div>
+        <span class="wbooth">展位 ${esc(w.stand)} · 分区 ${esc(w.zone)}${(w.rel==='high'||w.rel==='med')?' · <b style="color:#ff9d4d">🔥燃机相关</b>':''}</span></div>
       <span class="wtag tag-${w.role||'Other'}">${w.role||'其他'}</span>
       <span class="wcaret">▾</span>
     </div>
